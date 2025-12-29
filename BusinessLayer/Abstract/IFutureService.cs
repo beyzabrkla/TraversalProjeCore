@@ -5,7 +5,7 @@ using System.Text;
 
 namespace BusinessLayer.Abstract
 {
-    public interface IFutureService : IGenericService<Feature>
+    public interface IFeatureService : IGenericService<Feature>
     {
     }
 }
