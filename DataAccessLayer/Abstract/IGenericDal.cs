@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 using System.Text;
 
 namespace DataAccessLayer.Abstract
@@ -10,5 +11,7 @@ namespace DataAccessLayer.Abstract
         void Delete(T t);
         void Update(T t);
         List<T> GetList();
+        T GetById(int id);
+        List<T> GetListByFilter(Expression<Func<T, bool>> filter); //arama işlemi
     }
 }
