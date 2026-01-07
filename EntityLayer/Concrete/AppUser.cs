@@ -11,5 +11,6 @@ namespace EntityLayer.Concrete
         public required string Surname { get; set; }
         public required string ImageUrl { get; set; }
         public required string Gender { get; set; }
+        public List<Reservation> Reservations { get; set; }
     }
 }
