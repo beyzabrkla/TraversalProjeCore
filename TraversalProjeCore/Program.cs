@@ -43,7 +43,6 @@ app.MapControllerRoute(
     pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
 );
 
-app.MapStaticAssets(); // Özel varlık haritalama metodu
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}")
