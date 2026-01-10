@@ -1,4 +1,5 @@
-﻿using ClosedXML.Excel;
+﻿using BusinessLayer.Abstract;
+using ClosedXML.Excel;
 using DataAccessLayer.Concrete;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -11,6 +12,13 @@ namespace TraversalProjeCore.Controllers
     [AllowAnonymous]
     public class ExcelController : Controller
     {
+        private readonly IExcelService _excelService;
+
+        public ExcelController(IExcelService excelService)
+        {
+            _excelService = excelService;
+        }
+
         public IActionResult Index()
         {
             return View();
@@ -37,23 +45,7 @@ namespace TraversalProjeCore.Controllers
 
         public IActionResult StaticExcelReport()
         {
-            ExcelPackage excel = new ExcelPackage();
-            var workSheet = excel.Workbook.Worksheets.Add("Sayfa1");
-            workSheet.Cells[1, 1].Value = "Rota";
-            workSheet.Cells[1, 2].Value = "Rehber";
-            workSheet.Cells[1, 3].Value = "Kontenjan";
-
-            workSheet.Cells[2, 1].Value = "Karadeniz - İç Anadolu - Batum";
-            workSheet.Cells[2, 2].Value = "Kadir Yıldız";
-            workSheet.Cells[2, 3].Value = "50";
-
-            workSheet.Cells[3, 1].Value = "Akdeniz - Antalya - Kıbrıs";
-            workSheet.Cells[3, 2].Value = "Zeynep Öztürk";
-            workSheet.Cells[3, 3].Value = "40";
-
-            var bytes = excel.GetAsByteArray();
-            return File(bytes, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "Dosya1.xlsx");
-
+            return File(_excelService.ExcelList(DestinationList()), "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet","YeniExcel.xlsx");
         }
 
         public IActionResult DestinationExcelReport()

@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace TraversalProjeCore.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Route("Admin/Guide")]
     public class GuideController : Controller
     {
         private readonly IGuideService _guideService;
@@ -16,18 +17,21 @@ namespace TraversalProjeCore.Areas.Admin.Controllers
             _guideService = guideService;
         }
 
+        [Route("Index")]
         public IActionResult Index()
         {
             var values = _guideService.TGetList();
             return View(values);
         }
 
+        [Route("AddGuide")]
         [HttpGet]
         public IActionResult AddGuide()
         {
             return View();
         }
 
+        [Route("AddGuide")]
         [HttpPost]
         public IActionResult AddGuide(Guide guide)
         {
@@ -49,6 +53,7 @@ namespace TraversalProjeCore.Areas.Admin.Controllers
             }
         }
 
+        [Route("EditGuide/{id}")]
         [HttpGet]
         public IActionResult EditGuide(int id)
         {
@@ -56,6 +61,7 @@ namespace TraversalProjeCore.Areas.Admin.Controllers
             return View(values);
         }
 
+        [Route("EditGuide/{id}")]
         [HttpPost]
         public IActionResult EditGuide(Guide guide)
         {
@@ -63,13 +69,26 @@ namespace TraversalProjeCore.Areas.Admin.Controllers
             return RedirectToAction("Index");
         }
 
-        public IActionResult ChangeToTrue(int id)
+        [Route("DeleteGuide/{id}")]
+        [HttpPost]
+        public IActionResult DeleteGuide(int id)
         {
+            var value = _guideService.TGetById(id);
+            _guideService.TDelete(value);
             return RedirectToAction("Index");
         }
 
+        [Route("ChangeToTrue/{id}")]
+        public IActionResult ChangeToTrue(int id)
+        {
+            _guideService.TChangeToTrueByGuide(id);
+            return RedirectToAction("Index");
+        }
+
+        [Route("ChangeToFalse/{id}")]
         public IActionResult ChangeToFalse(int id)
         {
+            _guideService.TChangeToFalseByGuide(id);
             return RedirectToAction("Index");
         }
     }

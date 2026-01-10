@@ -14,7 +14,7 @@
         <th>Ad Soyad</th>
         <th>Açıklama</th>
         <th>Durum</th>
-        <th>Düzenle</th>
+        <th>İşlemler</th>
     </tr>
 
     @foreach (var x in Model)
@@ -27,14 +27,23 @@
             <td>@x.Description</td>
             @if (x.Status == true)
             {
-                <td><a href="#" class="btn btn-outline-warning">Pasif Yap</a></td>
+                <td><a href="/Admin/Guide/ChangeToFalse/@x.GuideId" class="btn btn-outline-warning">Pasif Yap</a></td>
             }
             else
             {
-                <td><a href="#" class="btn btn-outline-success">Aktif Yap</a></td>
+                <td><a href="/Admin/Guide/ChangeToTrue/@x.GuideId" class="btn btn-outline-success">Aktif Yap</a></td>
             }
 
-            <td><a href="#" class="btn btn-outline-success">Düzenle</a></td>
+            <td>
+                <a href="/Admin/Guide/EditGuide/@x.GuideId" class="btn btn-outline-warning">Düzenle</a>
+                <form method="post" action="/Admin/Guide/DeleteGuide/@x.GuideId" style="display:inline;">
+                    <button type="submit"
+                            class="btn btn-outline-danger"
+                            onclick="return confirm('Bu rehberi silmek istediğinizden emin misiniz?');">
+                        Sil
+                    </button>
+                </form>
+            </td>
         </tr>
     }
 </table>

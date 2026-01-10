@@ -18,27 +18,42 @@ namespace BusinessLayer.Concrete
 
         public void TAdd(AppUser t)
         {
-            throw new NotImplementedException();
+            _appUserDal.Insert(t);
         }
 
         public void TDelete(AppUser t)
         {
-            throw new NotImplementedException();
+            _appUserDal.Delete(t);
         }
 
         public AppUser TGetById(int id)
         {
-            throw new NotImplementedException();
+            return _appUserDal.GetById(id);
         }
 
         public List<AppUser> TGetList()
         {
-           return _appUserDal.GetList();
+            return _appUserDal.GetList();
         }
 
         public void TUpdate(AppUser t)
         {
-            throw new NotImplementedException();
+            var existingUser = _appUserDal.GetById(t.Id);
+
+            if (existingUser != null)
+            {
+                existingUser.Name = t.Name;
+                existingUser.Surname = t.Surname;
+                existingUser.UserName = t.UserName;
+                existingUser.Email = t.Email;
+                existingUser.PhoneNumber = t.PhoneNumber;
+                existingUser.ImageUrl = t.ImageUrl;
+
+                // Identity ConcurrencyStamp'ı güncel nesneye kopyalayın
+                existingUser.ConcurrencyStamp = t.ConcurrencyStamp;
+
+                _appUserDal.Update(existingUser);
+            }
         }
     }
 }

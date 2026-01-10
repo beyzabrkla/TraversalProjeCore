@@ -14,7 +14,7 @@ namespace BusinessLayer.Container
     public static class Extensions
     {
         // Metodu da statik yapıyoruz ve 'this IServiceCollection' kullanıyoruz böylece new lemeye gerek kalmadan metodu çağırabiliriz.
-        public static void ContainerDependencies(this IServiceCollection services) 
+        public static void ContainerDependencies(this IServiceCollection services)
         {
 
             services.AddScoped<ICommentService, CommentManager>();// ICommentService bağımlılığı
@@ -28,10 +28,13 @@ namespace BusinessLayer.Container
 
             services.AddScoped<IReservationService, ReservationManager>();
             services.AddScoped<IReservationDal, EFReservationDal>();
- 
+
             services.AddScoped<IGuideService, GuideManager>();
             services.AddScoped<IGuideDal, EFGuideDal>();
 
+            services.AddScoped<IExcelService, ExcelManager>();
+            services.AddScoped<IPdfService, PdfManager>();
         }
     }
 }
+
