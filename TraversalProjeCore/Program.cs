@@ -1,5 +1,6 @@
 ﻿using BusinessLayer.Abstract;
 using BusinessLayer.Concrete;
+using Microsoft.Extensions.DependencyInjection;
 using BusinessLayer.Container;
 using DataAccessLayer.Abstract;
 using DataAccessLayer.Concrete;
@@ -7,6 +8,7 @@ using DataAccessLayer.EntityFramework;
 using EntityLayer.Concrete;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.Authorization;
+using Microsoft.Extensions.DependencyInjection;
 using OfficeOpenXml;
 using Serilog;
 using Serilog.Events;
@@ -46,6 +48,8 @@ builder.Services.AddDbContext<Context>();
 builder.Services.AddIdentity<AppUser, AppRole>().AddEntityFrameworkStores<Context>().AddErrorDescriber<CustomIdentityValidator>();
 
 builder.Services.ContainerDependencies();
+
+builder.Services.AddAutoMapper(typeof(Program));
 
 builder.Services.AddControllersWithViews(config =>
 {

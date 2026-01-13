@@ -7,7 +7,7 @@ using System.Text;
 
 namespace DataAccessLayer.EntityFramework
 {
-    public class EFIAnnouncementDal : GenericRepository<Announcement>, IAnnouncementDal
+    public class EFAnnouncementDal : GenericRepository<Announcement>, IAnnouncementDal
     {
     }
 }

@@ -7,7 +7,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="DTOs\ContactDTOs\" />
+    <Compile Remove="DTOs\ContactDTOs\**" />
+    <EmbeddedResource Remove="DTOs\ContactDTOs\**" />
+    <None Remove="DTOs\ContactDTOs\**" />
   </ItemGroup>
 
 </Project>
