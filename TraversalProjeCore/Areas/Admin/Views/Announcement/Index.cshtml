@@ -12,6 +12,7 @@
         <th>Başlık</th>
         <th>İçerik</th>
         <th>Detaylar</th>
+        <th>Sil</th>
     </tr>
     @foreach (var x in Model)
     {
@@ -19,7 +20,8 @@
             <td>@x.AnnouncementId</td>
             <td>@x.Title</td>
             <td>@x.Content</td>
-            <td><a href="#" class="btn btn-outline-dark">Detaylar</a></td>
+            <td><a href="/Admin/Announcement/UpdateAnnouncement/@x.AnnouncementId" class="btn btn-outline-success">Güncelle</a></td>
+            <td><a href="/Admin/Announcement/DeleteAnnouncement/@x.AnnouncementId" class="btn btn-outline-danger">Sil</a></td>
         </tr>
     }
 </table>
