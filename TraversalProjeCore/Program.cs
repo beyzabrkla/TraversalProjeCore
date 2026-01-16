@@ -1,6 +1,5 @@
 ﻿using BusinessLayer.Abstract;
 using BusinessLayer.Concrete;
-using Microsoft.Extensions.DependencyInjection;
 using BusinessLayer.Container;
 using DataAccessLayer.Abstract;
 using DataAccessLayer.Concrete;
@@ -9,10 +8,12 @@ using EntityLayer.Concrete;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection;
 using OfficeOpenXml;
 using Serilog;
 using Serilog.Events;
 using System.IO;
+using TraversalProjeCore.CQRS.Handlers.DestinationHandlers;
 using TraversalProjeCore.Models;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -61,6 +62,8 @@ builder.Services.AddControllersWithViews(config =>
                     .Build();
     config.Filters.Add(new AuthorizeFilter(policy));
 });
+
+builder.Services.AddScoped<GetAllDestinationQueryHandler>();
 
 OfficeOpenXml.ExcelPackage.LicenseContext = OfficeOpenXml.LicenseContext.NonCommercial;
 
