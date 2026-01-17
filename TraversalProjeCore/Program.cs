@@ -5,6 +5,7 @@ using DataAccessLayer.Abstract;
 using DataAccessLayer.Concrete;
 using DataAccessLayer.EntityFramework;
 using EntityLayer.Concrete;
+using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.Extensions.DependencyInjection;
@@ -64,6 +65,12 @@ builder.Services.AddControllersWithViews(config =>
 });
 
 builder.Services.AddScoped<GetAllDestinationQueryHandler>();
+builder.Services.AddScoped<GetDestinationByIdQueryHandler>();
+builder.Services.AddScoped<CreateDestinationCommandHandler>();
+builder.Services.AddScoped<RemoveDestinationCommandHandler>();
+builder.Services.AddScoped<UpdateDestinationCommandHandler>();
+
+builder.Services.AddMediatR(typeof(Program));
 
 OfficeOpenXml.ExcelPackage.LicenseContext = OfficeOpenXml.LicenseContext.NonCommercial;
 

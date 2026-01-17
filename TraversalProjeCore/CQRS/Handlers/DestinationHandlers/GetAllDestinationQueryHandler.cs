@@ -16,14 +16,16 @@ namespace TraversalProjeCore.CQRS.Handlers.DestinationHandlers
 
         public List<GetAllDestinationQueryResult> Handle()
         {
-            var values = _context.Destinations.Select(x=>new GetAllDestinationQueryResult
+            var values = _context.Destinations.AsNoTracking().Select(x => new GetAllDestinationQueryResult
             {
                 id = x.DestinationId,
                 Capacity = x.Capacity,
-                City=x.City,
-                DayNight=x.DayNight,
-                Price= Convert.ToDouble(x.Price)
-            }).AsNoTracking().ToList();  //AsNoTracking -Bu veriyi sadece oku, üzerinde bir değişiklik yapıp veritabanına geri kaydetmeyeceğim, o yüzden boşuna takip etme" demektir.
+                City = x.City,
+                DayNight = x.DayNight, 
+                // Price alanının tipini kontrol et: QueryResult içinde double ise ToString() kullanma!
+                Price = x.Price.ToString(),
+            }).ToList();
+
             return values;
         }
     }

@@ -18,9 +18,10 @@ namespace TraversalProjeCore.CQRS.Handlers.DestinationHandlers
             var values = _context.Destinations.Find(query.Id);
             return new GetDestinationByIdQueryResult
             {
-                DestinaionId = values.DestinationId,
+                DestinationId = values.DestinationId,
                 City = values.City,
-                DayNight = values.DayNight
+                DayNight = values.DayNight,
+                Price = Convert.ToDouble(values.Price)
             };
         }
     }

@@ -5,72 +5,17 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace DataAccessLayer.Migrations
 {
-    /// <inheritdoc />
     public partial class deneme : Migration
     {
-        /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AlterColumn<bool>(
-                name: "Status",
-                table: "Destinations",
-                type: "bit",
-                nullable: false,
-                defaultValue: false,
-                oldClrType: typeof(bool),
-                oldType: "bit",
-                oldNullable: true);
-
-            migrationBuilder.CreateTable(
-                name: "Announcements",
-                columns: table => new
-                {
-                    AnnouncementId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Title = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Content = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Date = table.Column<DateTime>(type: "datetime2", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Announcements", x => x.AnnouncementId);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "ContactUses",
-                columns: table => new
-                {
-                    ContactUsId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Mail = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Subject = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    MessageBody = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    MessageDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    MessageStatus = table.Column<bool>(type: "bit", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_ContactUses", x => x.ContactUsId);
-                });
+            // Veritabanında zaten var olan tabloların hata vermemesi için
+            // buradaki CreateTable kodlarını sildik.
         }
 
-        /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropTable(
-                name: "Announcements");
-
-            migrationBuilder.DropTable(
-                name: "ContactUses");
-
-            migrationBuilder.AlterColumn<bool>(
-                name: "Status",
-                table: "Destinations",
-                type: "bit",
-                nullable: true,
-                oldClrType: typeof(bool),
-                oldType: "bit");
+            // Gerekirse burayı da boş bırakabilirsin.
         }
     }
 }
