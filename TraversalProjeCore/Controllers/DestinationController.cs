@@ -1,4 +1,5 @@
-﻿using BusinessLayer.Concrete;
+﻿using BusinessLayer.Abstract;
+using BusinessLayer.Concrete;
 using DataAccessLayer.EntityFramework;
 using EntityLayer.Concrete;
 using Microsoft.AspNetCore.Mvc;
@@ -7,10 +8,16 @@ namespace TraversalProjeCore.Controllers
 {
     public class DestinationController : Controller
     {
-        DestinationManager destinationManager = new DestinationManager(new EFDestinationDal());
+        private readonly IDestinationService _destinationService;
+
+        public DestinationController(IDestinationService destinationService)
+        {
+            _destinationService = destinationService;
+        }
+
         public IActionResult Index()
         {
-            var values = destinationManager.TGetList();
+            var values = _destinationService.TGetList();
             return View(values);
         }
 
@@ -18,7 +25,7 @@ namespace TraversalProjeCore.Controllers
         public IActionResult DestinationDetails(int id)
         {
             ViewBag.i = id;
-            var values = destinationManager.TGetById(id);
+            var values = _destinationService.TGetById(id);
             return View(values);
         }
 

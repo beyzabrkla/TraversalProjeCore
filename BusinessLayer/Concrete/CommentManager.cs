@@ -3,6 +3,7 @@ using DataAccessLayer.Abstract;
 using EntityLayer.Concrete;
 using System;
 using System.Collections.Generic;
+using System.Net.Http.Headers;
 using System.Text;
 
 namespace BusinessLayer.Concrete
@@ -23,17 +24,17 @@ namespace BusinessLayer.Concrete
 
         public void TDelete(Comment t)
         {
-            throw new NotImplementedException();
+            _commentDal.Delete(t);
         }
 
         public Comment TGetById(int id)
         {
-            throw new NotImplementedException();
+            return _commentDal.GetById(id); 
         }
 
         public List<Comment> TGetList()
         {
-            throw new NotImplementedException();
+           return _commentDal.GetList();
         }
         
         public List<Comment> TGetDestinationById(int id)
@@ -44,6 +45,11 @@ namespace BusinessLayer.Concrete
         public void TUpdate(Comment t)
         {
             throw new NotImplementedException();
+        }
+
+        public List<Comment> TGetListCommentWithDestination()
+        {
+            return _commentDal.GetListCommentWithDestination();
         }
     }
 }

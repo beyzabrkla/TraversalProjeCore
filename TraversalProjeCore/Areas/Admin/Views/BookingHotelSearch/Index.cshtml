@@ -1,0 +1,71 @@
+﻿@model IEnumerable<BookingHotelSearchViewModel.Result>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    int count = 0;
+}
+
+<h1>Booking Otel Rezervasyon Sayfası</h1>
+<h4>Arama Yapılan Şehir: Prag/Çek Cumhuriyeti</h4>
+
+<table class="table table-striped table-hover">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Otel Adı</th>
+            <th>Otel Puanı</th>
+            <th>Değerlendirme</th>
+            <th>İşlem</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var x in Model)
+        {
+            count++;
+            <tr>
+                <td>@count</td>
+                <td>@x.name</td>
+                <td><span class="badge bg-primary">@x.reviewScore</span></td>
+                <td>
+                    @{
+                        // Trim() kullanarak gizli boşluk hatalarını engelliyoruz
+                        var scoreWord = x.reviewScoreWord?.Trim();
+
+                        if (scoreWord == "Very good")
+                        {
+                            <span>Çok İyi</span>
+                        }
+                        else if (scoreWord == "Good")
+                        {
+
+                            <span>İyi</span>
+                        }
+                        else if (scoreWord == "Fabulous")
+                        {
+
+                            <span>Harika</span>
+                        }
+                        else if (scoreWord == "Superb")
+                        {
+
+                            <span>Muhteşem</span>
+                        }
+                        else if (scoreWord == "Pleasant")
+                        {
+
+                            <span>Memnun Edici</span>
+                        }
+                        else
+                        {
+
+                            <span>@scoreWord</span>
+                        } // Tanımlı değilse orjinalini yaz
+                    }
+                </td>
+                <td>
+                    <a href="#" class="btn btn-outline-dark">Detaylar</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

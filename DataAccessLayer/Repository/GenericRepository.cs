@@ -1,5 +1,6 @@
 ﻿using DataAccessLayer.Abstract;
 using DataAccessLayer.Concrete;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
@@ -44,7 +45,8 @@ namespace DataAccessLayer.Repository
         public void Update(T t)
         {
             using var c = new Context();
-            c.Update(t);
+            c.Entry(t).State = EntityState.Modified;
+            c.SaveChanges();
         }
     }
 }

@@ -17,7 +17,7 @@ namespace DataAccessLayer.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "10.0.1")
+                .HasAnnotation("ProductVersion", "10.0.2")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -76,6 +76,50 @@ namespace DataAccessLayer.Migrations
                     b.HasKey("About2Id");
 
                     b.ToTable("Abouts2");
+                });
+
+            modelBuilder.Entity("EntityLayer.Concrete.Account", b =>
+                {
+                    b.Property<int>("AccountId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("AccountId"));
+
+                    b.Property<decimal>("Balance")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("AccountId");
+
+                    b.ToTable("Accounts");
+                });
+
+            modelBuilder.Entity("EntityLayer.Concrete.Announcement", b =>
+                {
+                    b.Property<int>("AnnouncementId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("AnnouncementId"));
+
+                    b.Property<string>("Content")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("AnnouncementId");
+
+                    b.ToTable("Announcements");
                 });
 
             modelBuilder.Entity("EntityLayer.Concrete.AppRole", b =>
@@ -253,6 +297,41 @@ namespace DataAccessLayer.Migrations
                     b.ToTable("Contacts");
                 });
 
+            modelBuilder.Entity("EntityLayer.Concrete.ContactUs", b =>
+                {
+                    b.Property<int>("ContactUsId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ContactUsId"));
+
+                    b.Property<string>("Mail")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("MessageBody")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("MessageDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("MessageStatus")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Subject")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("ContactUsId");
+
+                    b.ToTable("ContactUses");
+                });
+
             modelBuilder.Entity("EntityLayer.Concrete.Destination", b =>
                 {
                     b.Property<int>("DestinationId")
@@ -291,7 +370,7 @@ namespace DataAccessLayer.Migrations
                     b.Property<string>("Price")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<bool?>("Status")
+                    b.Property<bool>("Status")
                         .HasColumnType("bit");
 
                     b.HasKey("DestinationId");

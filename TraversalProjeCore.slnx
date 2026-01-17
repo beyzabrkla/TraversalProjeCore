@@ -1,6 +1,7 @@
 <Solution>
   <Project Path="BusinessLayer/BusinessLayer.csproj" Id="bd3f9cc2-e8d1-43e7-97f6-cf682706c815" />
   <Project Path="DataAccessLayer/DataAccessLayer.csproj" Id="5f949bfa-c8b7-4bd6-880d-1587936995a3" />
+  <Project Path="DTOLayer/DTOLayer.csproj" />
   <Project Path="EntityLayer/EntityLayer.csproj" Id="ba44b82a-1eba-46b0-abc7-6d76ea31300b" />
   <Project Path="TraversalProjeCore/TraversalProjeCore.csproj" />
 </Solution>
