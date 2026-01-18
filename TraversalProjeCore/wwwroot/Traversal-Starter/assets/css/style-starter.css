@@ -40,7 +40,45 @@ Author URL: http://w3layouts.com
   --font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
+.testimonial-width {
+    max-width: 800px; /* Kutunun çok genişleyip yayılmaması için */
+    margin: 0 auto; /* Ortalamak için */
+}
 
+.testimonial-content {
+    text-align: center;
+}
+
+.testi-des {
+    justify-content: center; /* Fotoğraf ve ismi merkeze çeker */
+}
+/* 1. Tüm resimleri aynı yüksekliğe sabitle ve bozma */
+.destination-img {
+    height: 180px !important; /* Resim yüksekliği sabitleme */
+    width: 100%;
+    object-fit: cover; /* Resmi kırp ama yayma/ezme */
+    border-radius: 8px;
+}
+
+/* 2. Kartların kutu yüksekliklerini eşitle */
+.subject-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%; /* Kartı tüm sütun boyunca uzat */
+}
+
+.subject-card-header {
+    flex: 1; /* İçerik az olsa da kutuyu doldur */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* İçeriği dikeyde ortala */
+    min-height: 220px; /* Kartlar için minimum bir yükseklik sınırı koy */
+}
+
+/* 3. Kartlar arasındaki mesafeyi (boşluğu) dengele */
+.subject-card {
+    margin-bottom: 30px; /* Alt alta gelen kartlar arasına boşluk */
+}
 *,
 *::before,
 *::after {

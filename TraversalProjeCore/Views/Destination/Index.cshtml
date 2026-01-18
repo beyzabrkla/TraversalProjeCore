@@ -25,14 +25,18 @@
                 <div class="row">
                     @foreach (var x in Model)
                     {
-                        <div class="col-lg-4 col-md-4 col-6">
-                            <div class="column">
-                                <a href="/Destination/DestinationDetails/@x.DestinationId"><img src="@x.Image" alt="" class="img-fluid"></a>
-                                <div class="info">
-                                    <h4><a href="blog-single.html">@x.City</a></h4>
-                                    <p>@x.DayNight </p>
+                        <div class="col-lg-4 col-md-6 col-6 mb-4">
+                            <div class="rota-kart-yeni">
+                                <div class="rota-resim">
+                                    <a href="/Destination/DestinationDetails/@x.DestinationId">
+                                        <img src="@x.Image" alt="" class="img-fluid">
+                                    </a>
+                                </div>
+                                <div class="rota-icerik">
+                                    <h4><a href="/Destination/DestinationDetails/@x.DestinationId">@x.City</a></h4>
+                                    <p>@x.DayNight</p>
                                     <div class="dst-btm">
-                                        <h6 class="">Başlayan Fiyatlarla </h6>
+                                        <h6>Başlayan Fiyatlarla</h6>
                                         <span>@x.Price ₺</span>
                                     </div>
                                 </div>
