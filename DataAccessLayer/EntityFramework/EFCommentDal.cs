@@ -18,5 +18,13 @@ namespace DataAccessLayer.EntityFramework
                 return c.Comments.Include(x => x.Destination).ToList(); // Yorumları ve ilişkili destinasyonları içeren liste döndürüldü
             }
         }
+
+        public List<Comment> GetListCommentWithDestinationAndUser(int id)
+        {
+            using (var c = new Context()) // Context nesnesi oluşturuldu
+            {
+                return c.Comments.Where(x=>x.DestinationId ==id).Include(x => x.AppUser).ToList(); // Yorumları ve ilişkili destinasyonları içeren liste döndürüldü
+            }
+        }
     }
 }

@@ -12,9 +12,9 @@ namespace TraversalProjeCore.ViewComponents.Destination
             _guideService = guideService;
         }
 
-        public IViewComponentResult Invoke()
+        public IViewComponentResult Invoke(int id)
         {
-            var values= _guideService.TGetById(1);
+            var values= _guideService.TGetById(id);
             return View(values);
         }
     }

@@ -7,9 +7,6 @@
 <!doctype html>
 <html lang="zxx">
 
-<head>
-    <link rel="stylesheet" href="/Traversal-Liberty/assets/css/style-liberty.css">
-</head>
 
 <body>
     <section class="w3l-about-breadcrumb text-left">
@@ -28,23 +25,27 @@
     <div class="py-5 w3l-homeblock1 text-center">
         <div class="container mt-md-3">
             <h3 class="blog-desc-big text-center mb-4">
-                Your Blog Posts are Boring? Here are 9 Tips for
-                Making your Writing more Interesting
+                Alanında en yetkin rehberlerimizin en güncel seyahat hikayelerini okumalısınız !!
             </h3>
             <div class="blog-post-align">
                 <div class="blog-post-img">
-                    <a href="#"><img src="@Model.Image" alt="" class="rounded-circle img-fluid" /></a>
+                    <a href="#"><img src="@Model.Guide.Image" alt="" class="rounded-circle img-fluid" /></a>
                 </div>
                 <div class="blog-post-info">
                     <div class="author align-items-center mb-1">
-                        <a href="#">Johnson smith</a> in <a href="#url">Traversal</a>
+                        @if (Model.Guide != null)
+                        {
+                            <a href="#">@Model.Guide.Name</a>
+                        }
+                        else
+                        {
+                            <a href="#">Rehber Atanmadı</a>
+                        }
+                        Tur Rotaları: <a href="#url">@Model.Guide.Description</a>
                     </div>
                     <ul class="blog-meta">
                         <li class="meta-item blog-lesson">
-                            <span class="meta-value"> June 13, 2020 </span>
-                        </li>
-                        <li class="meta-item blog-students">
-                            <span class="meta-value"> 6min read</span>
+                            <span class="meta-value">@Model.Date.ToString("dd-MMM-yyyy") </span>
                         </li>
                     </ul>
                 </div>
@@ -95,10 +96,11 @@
                             <a href="#blog-tag">Hotel</a>
                         </div>
                     </div>
-                    @await Component.InvokeAsync("GuideDetails")
+                    @await Component.InvokeAsync("GuideDetails", new { id = Model.GuideId })
 
                     @await Component.InvokeAsync("CommentList", new { id = ViewBag.i })
-                    @await Html.PartialAsync("/Views/Comment/AddComment.cshtml")
+
+                    @await Html.PartialAsync("/Views/Comment/AddComment.cshtml", new {id =ViewBag.DestId})
                 </div>
             </div>
         </div>
