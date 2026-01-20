@@ -36,27 +36,37 @@
     --font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
-/* Arka plan beyaz olduğunda kartların ve yazıların alacağı hal */
-.bg-white .rota-kart-yeni {
+/* --- AYDINLIK TEMA (data-theme="light" olduğunda) --- */
+[data-theme="light"] .rota-kart-yeni {
     background-color: #ffffff !important;
     border: 1px solid #eaeaea;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
 }
 
-.bg-white .rota-icerik h4 a,
-.bg-white .rota-icerik p,
-.bg-white .hny-title {
-    color: #2d2d2d !important; /* Yazıları görünür koyu gri yapar */
+[data-theme="light"] .rota-icerik h4 a,
+[data-theme="light"] .rota-icerik p,
+[data-theme="light"] .hny-title {
+    color: #2d2d2d !important; /* Yazıları siyah/koyu gri yapar */
 }
 
-.bg-white .dst-btm h6 {
+[data-theme="light"] .dst-btm h6 {
     color: #666 !important;
 }
 
-/* Karanlık modda (zaten çalışan halini korumak için) */
-.bg-dark .rota-kart-yeni {
+/* --- KARANLIK TEMA (data-theme="dark" olduğunda) --- */
+[data-theme="dark"] .rota-kart-yeni {
     background-color: #151515 !important;
-    color: #fff;
+    border: 1px solid #333;
+}
+
+[data-theme="dark"] .rota-icerik h4 a,
+[data-theme="dark"] .rota-icerik p,
+[data-theme="dark"] .hny-title {
+    color: #ffffff !important; /* Yazıları beyaz yapar */
+}
+
+[data-theme="dark"] .dst-btm h6 {
+    color: #eee !important;
 }
 .single-post-content {
     max-width: 100% !important;
@@ -202,11 +212,16 @@ body {
     font-size: 1rem;
     font-weight: 400;
     line-height: 1.5;
-    color: #212529;
     text-align: left;
-    background-color: #fff;
+    /* Sabit renkler yerine değişkenleri kullanıyoruz */
+    background-color: var(--bg-color) !important;
+    color: var(--font-color);
 }
 
+/* Başlıkların rengini de garantiye alalım */
+h1, h2, h3, h4, h5, h6 {
+    color: var(--heading-color);
+}
 [tabindex="-1"]:focus:not(:focus-visible) {
     outline: 0 !important;
 }
@@ -5159,9 +5174,10 @@ input[type="button"].btn-block {
     flex-direction: column;
     min-width: 0;
     word-wrap: break-word;
-    background-color: #fff;
+    /* Kartın arka planı da temaya göre değişmeli */
+    background-color: var(--bg-light);
     background-clip: border-box;
-    border: 1px solid rgba(0, 0, 0, 0.125);
+    border: 1px solid var(--border-color);
     border-radius: 0.25rem;
 }
 
@@ -14150,9 +14166,11 @@ a.text-dark:focus {
     --primary-color: #000000;
     --secondary-color: #FF1654;
     --font-color: #777;
-    --bg-color: #fff;
+    --bg-color: #ffffff;
     --heading-color: #151b1d;
+    --font-color: #666;
     --logo-color: #151b1d;
+    --card-bg: #ffffff;
     --border-radius: 8px;
     --border-radius-1: 8px;
     --border-color: #ddd;
@@ -14171,9 +14189,10 @@ a.text-dark:focus {
     --primary-color: #000000;
     --secondary-color: #FF1654;
     --font-color: #999;
-    --bg-color: #000;
-    --heading-color: #fff;
+    --bg-color: #151515;
+    --heading-color: #ffffff;
     --border-color: #36393a;
+    --card-bg: #202020;
     --border-light: #36393a;
     --nav-color: #fff;
     --logo-color: #fff;

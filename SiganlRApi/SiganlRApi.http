@@ -1,0 +1,6 @@
+@SiganlRApi_HostAddress = http://localhost:5293
+
+GET {{SiganlRApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

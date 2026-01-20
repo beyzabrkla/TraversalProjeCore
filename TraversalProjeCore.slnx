@@ -3,5 +3,6 @@
   <Project Path="DataAccessLayer/DataAccessLayer.csproj" Id="5f949bfa-c8b7-4bd6-880d-1587936995a3" />
   <Project Path="DTOLayer/DTOLayer.csproj" />
   <Project Path="EntityLayer/EntityLayer.csproj" Id="ba44b82a-1eba-46b0-abc7-6d76ea31300b" />
+  <Project Path="SiganlRApi/SiganlRApi.csproj" Id="5067cd96-edaf-4af9-965f-d6bbff64f545" />
   <Project Path="TraversalProjeCore/TraversalProjeCore.csproj" />
 </Solution>
