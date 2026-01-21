@@ -1,11 +1,19 @@
 using Microsoft.EntityFrameworkCore;
 using SiganlRApi.DAL;
+using SiganlRApi.Hubs;
 using SiganlRApi.Model;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
 builder.Services.AddSignalR();
+builder.Services.AddCors(options=>options.AddPolicy("CorsPolicy",
+    builder =>
+    {
+        builder.AllowAnyHeader()
+               .AllowAnyMethod()
+               .SetIsOriginAllowed((host) => true)
+               .AllowCredentials();
+    }));
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
@@ -16,7 +24,6 @@ builder.Services.AddScoped<VisitorService>();
 builder.Services.AddEntityFrameworkNpgsql().AddDbContext<Context>(opt =>
 opt.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
 
@@ -30,9 +37,10 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI(); // Bu satýr /swagger adresini oluþturur
 
 }
+app.UseCors("CorsPolicy");
 
 app.UseAuthorization();
-
 app.MapControllers();
 
+app.MapHub<VisitorHub>("/VisitorHub");
 app.Run();

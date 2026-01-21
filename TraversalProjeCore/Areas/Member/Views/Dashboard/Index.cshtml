@@ -1,5 +1,4 @@
-﻿
-@{
+﻿@{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_UserLayout.cshtml";
 }
@@ -24,7 +23,9 @@
             <div class="row gx-4">
                 <div class="col-auto">
                     <div class="avatar avatar-xl position-relative">
-                        <img src="/UserImages/@ViewBag.UserImage" alt="profile_image" class="w-100 border-radius-lg shadow-sm">
+                        <img src="@ViewBag.ImageUrl" alt="profile_image"
+                             class="rounded-circle shadow-sm"
+                             style="width: 74px; height: 74px; object-fit: cover; border: 2px solid #fff;">
                     </div>
                 </div>
                 <div class="col-auto my-auto">
@@ -111,7 +112,7 @@
             @await Component.InvokeAsync("PlatformSetting")
 
             @await Component.InvokeAsync("ProfileInformation")
-            
+
             @await Component.InvokeAsync("GuideList")
 
             <div class="col-12 mt-4">

@@ -18,7 +18,7 @@ namespace TraversalProjeCore.Areas.Member.Controllers
         {
             var values = await _userManager.FindByNameAsync(User.Identity.Name); 
             ViewBag.UserName = values.Name +" "+ values.Surname;
-            ViewBag.UserImage = values.ImageUrl;
+            ViewBag.ImageUrl = values.ImageUrl;
             return View();
         }
     }

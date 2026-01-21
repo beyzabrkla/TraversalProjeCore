@@ -17,10 +17,11 @@ namespace SiganlRApi.Controllers
         }
 
         [HttpGet]
-        public IActionResult CreateVisitor()
+        public async Task<IActionResult> CreateVisitor() // async eklendi
         {
             Random random = new Random();
-            Enumerable.Range(1, 10).ToList().ForEach(x =>
+            // ForEach içinde await kullanabilmek için döngüyü düzeltiyoruz
+            for (int x = 1; x <= 10; x++)
             {
                 foreach (Ecity item in Enum.GetValues(typeof(Ecity)))
                 {
@@ -28,13 +29,13 @@ namespace SiganlRApi.Controllers
                     {
                         City = item,
                         CityVisitCount = random.Next(100, 2000),
-                        // DEĞİŞİKLİK BURADA:
                         VisitDate = DateTime.UtcNow.AddDays(x)
                     };
-                    _visitorService.SaveVisitor(newVisitor).Wait();
-                    System.Threading.Thread.Sleep(1000);
+                    // await kullanarak kilitlenmeyi önlüyoruz
+                    await _visitorService.SaveVisitor(newVisitor);
+                    await Task.Delay(1000); // Thread.Sleep yerine asenkron gecikme
                 }
-            });
+            }
             return Ok("Ziyaretçiler başarılı bir şekilde eklendi");
         }
     }

@@ -33,7 +33,9 @@ namespace SiganlRApi.Model
             List<VisitorChart> visitorCharts = new List<VisitorChart>();
             using (var command = _context.Database.GetDbConnection().CreateCommand())
             {
-                command.CommandText = "query sorgu";
+                command.CommandText = "select * from crosstab" +
+                    "('Select \"VisitDate\",\"City\",\"CityVisitCount\" from \"Visitors\" order by 1,2')" +
+                    " As ct (\"VisitDate\" timestamptz, City1 int, City2 int, City3 int, City4 int, City5 int);";
                 command.CommandType = System.Data.CommandType.Text;
                 _context.Database.OpenConnection();
                 using (var reader = command.ExecuteReader())
@@ -41,7 +43,7 @@ namespace SiganlRApi.Model
                     while (reader.Read())
                     {
                         VisitorChart visitorChart = new VisitorChart();
-                        visitorChart.VisitDate =reader.GetDateTime(0).ToShortDateString();
+                        visitorChart.VisitDate = reader.GetDateTime(0).ToShortDateString();
                         Enumerable.Range(1, 5).ToList().ForEach(x =>
                         {
                             visitorChart.Counts.Add(reader.GetInt32(x));
