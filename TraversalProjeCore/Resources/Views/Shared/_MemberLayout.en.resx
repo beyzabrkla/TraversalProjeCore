@@ -118,30 +118,33 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Profilim" xml:space="preserve">
-    <value>Profilim</value>
+    <value>My Profile</value>
   </data>
   <data name="Onay Bekleyen Rez." xml:space="preserve">
-    <value>Onay Bekleyen Rez.</value>
+    <value>Pending App. Res.</value>
   </data>
   <data name="Yeni Rezervasyon" xml:space="preserve">
-    <value>Yeni Rezervasyon</value>
+    <value>New Reservation</value>
   </data>
   <data name="Yorumlarım" xml:space="preserve">
-    <value>Yorumlarım</value>
+    <value>My Comments</value>
   </data>
   <data name="Tur Rotaları" xml:space="preserve">
-    <value>Tur Rotaları</value>
+    <value>Tour Routes</value>
   </data>
   <data name="Son Rotalar" xml:space="preserve">
-    <value>Son Rotalar</value>
+    <value>Latest Routes</value>
   </data>
   <data name="Siteye Git" xml:space="preserve">
-    <value>Siteye Git</value>
+    <value>Go To Site</value>
   </data>
   <data name="Çıkış Yap" xml:space="preserve">
-    <value>Çıkış Yap</value>
+    <value>Sign Out</value>
   </data>
   <data name="Geçmiş Rez." xml:space="preserve">
-    <value>Geçmiş Rez.</value>
+    <value>Old Reservation</value>
+  </data>
+  <data name="Aktif Rez." xml:space="preserve">
+    <value>Active Res.</value>
   </data>
 </root>

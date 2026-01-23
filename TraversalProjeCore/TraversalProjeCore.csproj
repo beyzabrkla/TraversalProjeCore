@@ -94,7 +94,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Update="Resources\Views\Shared\MemberLayout.en.resx">
+    <EmbeddedResource Update="Resources\Views\Shared\_MemberLayout.en.resx">
       <Generator></Generator>
     </EmbeddedResource>
   </ItemGroup>
