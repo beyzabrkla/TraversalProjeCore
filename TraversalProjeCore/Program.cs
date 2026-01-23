@@ -112,7 +112,7 @@ app.UseAuthorization();
 
 var suppertedCultures = new[] { "tr", "en" ,"es", "el", "fr","de"};  //dil
 var localizationOptions = new RequestLocalizationOptions()
-    .SetDefaultCulture(suppertedCultures[4])
+    .SetDefaultCulture(suppertedCultures[1])
     .AddSupportedCultures(suppertedCultures)
     .AddSupportedUICultures(suppertedCultures);
 
