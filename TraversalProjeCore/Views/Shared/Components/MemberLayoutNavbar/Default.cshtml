@@ -1,0 +1,47 @@
+﻿@using EntityLayer.Concrete
+@using Microsoft.AspNetCore.Identity
+@model AppUser
+
+<ul class="nav navbar-nav float-right">
+    <li class="dropdown dropdown-notification nav-item">
+        <a class="nav-link nav-link-label" href="#" data-toggle="dropdown">
+            <i class="ficon ft-mail"></i>
+        </a>
+        <div class="dropdown-menu dropdown-menu-right">
+            <div class="arrow_box_right">
+                <a class="dropdown-item" href="#">
+                    <i class="ft-book"></i>Yeni Mesaj</a>
+                <a class="dropdown-item" href="#">
+                    <i class="ft-bookmark"></i>İletişim Sayfası</a>
+                <a class="dropdown-item" href="#">
+                    <i class="ft-check-square"></i>Ana Sayfa</a>
+            </div>
+        </div>
+    </li>
+    <li class="dropdown dropdown-user nav-item">
+        <a class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown">
+            <span class="avatar avatar-online">
+                <img src="@Model.ImageUrl" alt="avatar" style="width:35px; height:35px; object-fit:cover; border-radius:50%;">
+            </span>
+        </a>
+        <div class="dropdown-menu dropdown-menu-right">
+            <div class="arrow_box_right">
+                <div class="dropdown-item">
+                    <span class="avatar avatar-online">
+                        <img src="@Model.ImageUrl" alt="avatar" style="width:30px; height:30px; object-fit:cover; border-radius:50%;">
+                        <span class="user-name text-bold-700 ml-1">@Model.Name @Model.Surname</span>
+                    </span>
+                </div>
+                <div class="dropdown-divider"></div>
+
+                <a class="dropdown-item" href="/Member/Profile/Index/"><i class="ft-user"></i> Profili Düzenle</a>
+                <a class="dropdown-item" href="/Member/Reservation/MyCurrentReservations/"><i class="ft-play"></i> Aktif Rezervasyonlarım</a>
+                <a class="dropdown-item" href="/Member/Reservation/MyOldReservations/"><i class="ft-clock"></i> Geçmiş Rezervasyonlarım</a>
+                <a class="dropdown-item" href="/Member/Reservation/MyApprovalReservations/"><i class="ft-check-circle"></i> Onay Bekleyenler</a>
+
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="/Login/Logout/"><i class="ft-power"></i> Çıkış Yap</a>
+            </div>
+        </div>
+    </li>
+</ul>

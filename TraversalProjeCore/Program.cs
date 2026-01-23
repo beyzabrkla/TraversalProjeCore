@@ -8,6 +8,7 @@ using EntityLayer.Concrete;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.Authorization;
+using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection;
 using OfficeOpenXml;
@@ -64,6 +65,13 @@ builder.Services.AddControllersWithViews(config =>
     config.Filters.Add(new AuthorizeFilter(policy));
 });
 
+builder.Services.AddLocalization(options => options.ResourcesPath = "Resources");
+
+builder.Services.AddMvc()
+    .AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix)
+    .AddDataAnnotationsLocalization();
+
+
 builder.Services.ConfigureApplicationCookie(options =>
 {
     options.LoginPath = "/Login/SignIn/";
@@ -101,6 +109,14 @@ app.UseRouting();
 //Kimlik doğrulama, yetkilendirmeden önce çalışmalıdır.
 app.UseAuthentication();
 app.UseAuthorization();
+
+var suppertedCultures = new[] { "tr", "en" ,"es", "el", "fr","de"};  //dil
+var localizationOptions = new RequestLocalizationOptions()
+    .SetDefaultCulture(suppertedCultures[4])
+    .AddSupportedCultures(suppertedCultures)
+    .AddSupportedUICultures(suppertedCultures);
+
+app.UseRequestLocalization(localizationOptions);
 
 // Alan (Area) Rotası (Eski UseEndpoints içindeki rota)
 app.MapControllerRoute(

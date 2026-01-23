@@ -16,5 +16,8 @@ namespace DataAccessLayer.Abstract
                 return c.Destinations.Where(x => x.DestinationId == id).Include(x => x.Guide).ToList();
             }
         }
+
+        public List<Destination> GetLast4Destinations();
+ 
     }
 }
