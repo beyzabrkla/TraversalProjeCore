@@ -21,9 +21,13 @@ namespace DataAccessLayer.EntityFramework
 
         public List<Comment> GetListCommentWithDestinationAndUser(int id)
         {
-            using (var c = new Context()) // Context nesnesi oluşturuldu
+            using (var context = new Context())
             {
-                return c.Comments.Where(x=>x.DestinationId ==id).Include(x => x.AppUser).ToList(); // Yorumları ve ilişkili destinasyonları içeren liste döndürüldü
+                return context.Comments
+                    .Include(x => x.Destination)
+                    .Where(x => x.AppUserId == id)
+                    .OrderByDescending(x => x.CommentDate) 
+                    .ToList();
             }
         }
     }

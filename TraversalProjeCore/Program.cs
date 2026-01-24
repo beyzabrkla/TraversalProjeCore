@@ -7,6 +7,8 @@ using DataAccessLayer.EntityFramework;
 using EntityLayer.Concrete;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.Extensions.DependencyInjection;
@@ -17,6 +19,7 @@ using Serilog.Events;
 using System.IO;
 using TraversalProjeCore.CQRS.Handlers.DestinationHandlers;
 using TraversalProjeCore.Models;
+using TraversalProjeCore.Resources.Views.Shared;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -48,7 +51,7 @@ builder.Host.UseSerilog();
 // === SERVİS KAYDI (SERVICES) ===
 
 builder.Services.AddDbContext<Context>();
-builder.Services.AddIdentity<AppUser, AppRole>().AddEntityFrameworkStores<Context>().AddErrorDescriber<CustomIdentityValidator>();
+builder.Services.AddIdentity<AppUser, AppRole>().AddEntityFrameworkStores<Context>().AddErrorDescriber<CustomIdentityValidator>().AddTokenProvider<DataProtectorTokenProvider<AppUser>>(TokenOptions.DefaultProvider);
 
 builder.Services.AddHttpClient();
 
@@ -75,6 +78,7 @@ builder.Services.AddMvc()
 builder.Services.ConfigureApplicationCookie(options =>
 {
     options.LoginPath = "/Login/SignIn/";
+    options.AccessDeniedPath = "/ErrorPage/Error404/";
 });
 
 builder.Services.AddScoped<GetAllDestinationQueryHandler>();
@@ -106,17 +110,23 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();
 
+
+// 1. Desteklenen dilleri tanımla
+var supportedCultures = new[] { "en", "fr", "tr" };
+var localizationOptions = new RequestLocalizationOptions()
+    .SetDefaultCulture("tr") // Varsayılan dil
+    .AddSupportedCultures(supportedCultures) // Kaynak dosyalarındaki diller
+    .AddSupportedUICultures(supportedCultures); // Arayüz dilleri
+
+// Çerezden gelen dil bilgisini en üst sıraya al:
+localizationOptions.RequestCultureProviders.Insert(0, new CookieRequestCultureProvider());
+// 2. Localization'ı etkinleştir (app.Run'dan hemen önce, UseRouting'den sonra olmalı)
+app.UseRequestLocalization(localizationOptions);
+
+
 //Kimlik doğrulama, yetkilendirmeden önce çalışmalıdır.
 app.UseAuthentication();
 app.UseAuthorization();
-
-var suppertedCultures = new[] { "tr", "en" ,"es", "el", "fr","de"};  //dil
-var localizationOptions = new RequestLocalizationOptions()
-    .SetDefaultCulture(suppertedCultures[1])
-    .AddSupportedCultures(suppertedCultures)
-    .AddSupportedUICultures(suppertedCultures);
-
-app.UseRequestLocalization(localizationOptions);
 
 // Alan (Area) Rotası (Eski UseEndpoints içindeki rota)
 app.MapControllerRoute(

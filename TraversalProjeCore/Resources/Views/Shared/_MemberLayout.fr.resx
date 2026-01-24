@@ -118,33 +118,33 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Profilim" xml:space="preserve">
-    <value>My Profile</value>
+    <value>Mon Profil</value>
   </data>
   <data name="Yeni Rezervasyon" xml:space="preserve">
-    <value>New Reservation</value>
+    <value>Nouvelle Rés</value>
   </data>
   <data name="Yorumlarım" xml:space="preserve">
-    <value>My Comments</value>
+    <value>Mes commentaires</value>
   </data>
   <data name="Tur Rotaları" xml:space="preserve">
-    <value>Tour Routes</value>
+    <value>Itinéraires de visite</value>
   </data>
   <data name="Son Rotalar" xml:space="preserve">
-    <value>Latest Routes</value>
+    <value>Derniers itinéraires</value>
   </data>
   <data name="Siteye Git" xml:space="preserve">
-    <value>Go To Site</value>
+    <value>Aller sur le site Web</value>
   </data>
   <data name="Çıkış Yap" xml:space="preserve">
-    <value>Sign Out</value>
+    <value>Se déconnecter</value>
   </data>
   <data name="Aktif Rez" xml:space="preserve">
-    <value>Active Res</value>
+    <value>Active Rés</value>
   </data>
   <data name="Onay Bekleyen Rez" xml:space="preserve">
-    <value>Latest Routes</value>
+    <value>Approbation Rés</value>
   </data>
   <data name="Geçmiş Rez" xml:space="preserve">
-    <value>Old Reservation</value>
+    <value>Passées Rés</value>
   </data>
 </root>

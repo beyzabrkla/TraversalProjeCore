@@ -25,6 +25,16 @@
 					<p class="card-text">Alanında uzman rehberlerimiz eşliğinde Balkanlardan Orta Asya'ya, Doğu Avrupa'dan Anadolu'nun dört bir yanına en uygun fiyatlarla sunduğumuz tur listemize ve tur detaylarına aşağıdaki
 						tablodan erişebilirsiniz.
 					</p>
+
+					<form asp-action="Index" method="get" asp-area="Member">
+						<div class="form-group">
+
+							<label for="searchCity">Şehir Adına Göre Arama Yapın:</label>
+							<input type="text" class="form-control" name="searchString" value="@ViewData["CurrentFilter"]" placeholder="Şehir Adını Girin..." />
+						</div>
+						<button type="submit" class="btn btn-primary">Ara</button>
+					</form>
+					<br />
 					<div class="table-responsive">
 						<table class="table table-bordered">
 							<tr>

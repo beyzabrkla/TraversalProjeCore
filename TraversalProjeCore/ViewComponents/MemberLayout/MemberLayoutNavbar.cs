@@ -15,8 +15,16 @@ namespace TraversalProjeCore.ViewComponents.MemberLayout
 
         public async Task<IViewComponentResult> InvokeAsync()
         {
+            // Kullanıcı giriş yapmış mı kontrol et, yapmadıysa null döndürme riskine girme
             var user = await _userManager.FindByNameAsync(User.Identity.Name);
-            return View(user); // Veriyi model olarak gönderdik
+
+            if (user == null)
+            {
+                // Güvenlik önlemi: Eğer bir şekilde buraya sızarsa Login'e gitsin
+                return Content("Giriş Gerekli");
+            }
+
+            return View(user);
         }
     }
 }

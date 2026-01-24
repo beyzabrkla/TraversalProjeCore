@@ -25,25 +25,28 @@
                     <p class="card-text">Web Sitemiz Traversal üzerinde yer alan lokasyonlar içinde yeni bir rezervasyonu aşağıdaki panelden yapabilirsiniz.</p>
                     <div class="table-responsive">
                         <form method="post">
-                            @* <div class="form-group">
-                                @Html.Label("Lokasyon")
-                                @Html.DropDownListFor(x => x.Destination, (List<SelectListItem>)ViewBag.DestinationList, new { @class = "form-control" })
-                            </div>*@
+                            <div class="form-group">
+                                @Html.Label("Lokasyon Seçin")
+                                @Html.DropDownListFor(x => x.DestinationId, (List<SelectListItem>)ViewBag.DestinationList, "Lütfen bir şehir seçin...", new { @class = "form-control" })
+                            </div>
+
                             <div class="form-group">
                                 @Html.Label("Kişi Sayısı")
-                                <input type="text" asp-for="PersonCount" class="form-control" />
+                                <input type="number" asp-for="PersonCount" class="form-control" min="1" max="10" />
                             </div>
+
                             <div class="form-group">
-                                @Html.Label("Tarih")
+                                @Html.Label("Rezervasyon Tarihi")
                                 <input type="date" asp-for="ReservationDate" class="form-control" />
                             </div>
-                            <div class="form-group">
-                                @Html.Label("Eklemek İstedikleriniz Varsa")
-                                <input type="text" asp-for="Description" class="form-control" />
-                            </div>
-                            <button type="submit" class="btn btn-success">Rezervasyon Yap</button>
-                        </form>
 
+                            <div class="form-group">
+                                @Html.Label("Eklemek İstedikleriniz (Notlar)")
+                                <textarea asp-for="Description" class="form-control" rows="3"></textarea>
+                            </div>
+
+                            <button type="submit" class="btn btn-success btn-lg">Rezervasyonu Tamamla</button>
+                        </form>
                     </div>
                 </div>
             </div>

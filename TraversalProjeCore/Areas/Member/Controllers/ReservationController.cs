@@ -38,7 +38,7 @@ namespace TraversalProjeCore.Areas.Member.Controllers
         public async Task<IActionResult> MyApprovalReservations()
         {
             var values = await _userManager.FindByNameAsync(User.Identity.Name);
-            var valuesList= reservationManager.GetListWithReservationByWaitApproval(values.Id);
+            var valuesList = reservationManager.GetListWithReservationByWaitApproval(values.Id);
             return View(valuesList);
         }
 
@@ -56,17 +56,20 @@ namespace TraversalProjeCore.Areas.Member.Controllers
         }
 
         [HttpPost]
-        public IActionResult NewReservation(Reservation p)
+        public async Task<IActionResult> NewReservation(Reservation p)
         {
-            p.AppUserId = 5;
+            // Giriş yapan kullanıcının bilgilerini alıyoruz
+            var user = await _userManager.FindByNameAsync(User.Identity.Name);
+
+            // Rezervasyonu yapan kullanıcı ID'sini dinamik atıyoruz
+            p.AppUserId = user.Id;
             p.Status = "Onay Bekliyor";
+
             reservationManager.TAdd(p);
-            return RedirectToAction("MyCurrentReservation");
+
+            // İşlem başarılı olduktan sonra onay bekleyen rezervasyonlarına yönlendiriyoruz
+            return RedirectToAction("MyApprovalReservations");
         }
 
-        public IActionResult Deneme()
-        {
-            return View();
-        }
     }
 }

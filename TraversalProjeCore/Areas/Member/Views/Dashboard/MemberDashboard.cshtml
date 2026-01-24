@@ -1,4 +1,7 @@
-﻿@{
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+
+@{
     ViewData["Title"] = "MemberDashboard";
     Layout = "~/Views/Shared/_MemberLayout.cshtml"; // Layout'u buraya bağla}
 }
@@ -57,61 +60,62 @@
         </div>
     </div>
 </div>
-<!--/ eCommerce statistic -->
-<!-- Statistics -->
+
+
 <div class="row match-height">
 
     @await Component.InvokeAsync("MemberStatistics")
 
     <div class="col-xl-4 col-lg-12">
         <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">@Localizer["Profil Bilgilerim"]</h4>
+                <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
+            </div>
             <div class="card-content">
                 <div class="card-body">
-                    <h4 class="card-title">Recent products</h4>
-                    <h6 class="card-subtitle text-muted">Carousel Card With Header & Footer</h6>
-                </div>
-                <div id="carousel-area" class="carousel slide" data-ride="carousel">
-                    <ol class="carousel-indicators">
-                        <li data-target="#carousel-area" data-slide-to="0" class="active"></li>
-                        <li data-target="#carousel-area" data-slide-to="1"></li>
-                        <li data-target="#carousel-area" data-slide-to="2"></li>
-                    </ol>
-                    <div class="carousel-inner" role="listbox">
-                        <div class="carousel-item active">
-                            <img src="/member/theme-assets/images/carousel/08.jpg" class="d-block w-100" alt="First slide">
-                        </div>
-                        <div class="carousel-item">
-                            <img src="/member/theme-assets/images/carousel/03.jpg" class="d-block w-100" alt="Second slide">
-                        </div>
-                        <div class="carousel-item">
-                            <img src="/member/theme-assets/images/carousel/01.jpg" class="d-block w-100" alt="Third slide">
-                        </div>
+                    @* Profil Bölümü *@
+                    <div class="text-center mb-2">
+                        <img src="@ViewBag.ImageUrl" class="rounded-circle img-fluid"
+                             style="width: 110px; height: 110px; object-fit: cover; border: 4px solid #6967ce; padding: 2px;" alt="User">
+                        <h4 class="mt-1 text-bold-600">@ViewBag.UserName</h4>
+                        <p class="text-muted">@User.Identity.Name</p>
                     </div>
-                    <a class="carousel-control-prev" href="#carousel-area" role="button" data-slide="prev">
-                        <span class="la la-angle-left" aria-hidden="true"></span>
-                        <span class="sr-only">Previous</span>
-                    </a>
-                    <a class="carousel-control-next" href="#carousel-area" role="button" data-slide="next">
-                        <span class="la la-angle-right icon-next" aria-hidden="true"></span>
-                        <span class="sr-only">Next</span>
-                    </a>
+
+                    @* Bilgi Tablosu (Kartın içini dolu gösterir) *@
+                    <div class="table-responsive">
+                        <table class="table table-sm table-borderless mb-0">
+                            <tbody>
+                                <tr>
+                                    <th class="pl-0">@Localizer["Üyelik"]:</th>
+                                    <td class="text-right pr-0 text-success text-bold-600">@Localizer["Aktif"]</td>
+                                </tr>
+                                <tr>
+                                    <th class="pl-0">@Localizer["Rol"]:</th>
+                                    <td class="text-right pr-0 text-muted">@Localizer["Gezgin"]</td>
+                                </tr>
+                                <tr>
+                                    <th class="pl-0">@Localizer["Şehir"]:</th>
+                                    <td class="text-right pr-0 text-muted">@Localizer["İstanbul"]</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    @* Butonlar *@
+                    <div class="mt-2">
+                        <a asp-area="Member" asp-controller="Reservation" asp-action="NewReservation" class="btn btn-primary btn-block mb-1">
+                            <i class="ft-plus-circle"></i> @Localizer["Yeni Rezervasyon Yap"]
+                        </a>
+                        <a asp-area="Member" asp-controller="Profile" asp-action="Index" class="btn btn-outline-secondary btn-block">
+                            <i class="ft-settings"></i> @Localizer["Hesap Ayarlarım"]
+                        </a>
+                    </div>
                 </div>
-                <div class="card-body">
-                    <a href="#" class="card-link">Card link</a>
-                    <a href="#" class="card-link">Another link</a>
-                </div>
-            </div>
-            <div class="card-footer border-top-blue-grey border-top-lighten-5 text-muted">
-                <span class="float-left">2 days ago</span>
-                <span class="tags float-right">
-                    <span class="badge badge-pill badge-primary">Branding</span>
-                    <span class="badge badge-pill badge-danger">Design</span>
-                </span>
             </div>
         </div>
     </div>
     @await Component.InvokeAsync("GuideList")
 
-    @await Component.InvokeAsync("LastDestinations")
 </div>
 <!--/ Statistics -->
