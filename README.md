@@ -46,51 +46,46 @@ Sistemin güvenlik ve kullanıcı yönetim merkezi olan bu bölümde, modern kim
 ## 👤 Gezgin (Member) Dashboard Sayfası
 -Kullanıcıların kendi verilerini takip ettiği, şık ve fonksiyonel yönetim merkezidir.
 
-### 📊 Kullanıcı Paneline Genel Bakış
--Kişisel İstatistikler: Kullanıcının geçmişte yaptığı toplam rezervasyon sayısı, aktif onay bekleyen seyahatleri ve sistemdeki toplam rotalar gibi bilgiler dinamik kartlarla sunulur.
--Profil Özeti: Giriş yapan kullanıcının adı, soyadı ve profil fotoğrafı Identity üzerinden çekilerek dashboard üzerinde kişiselleştirilmiş bir karşılama alanı oluşturur.
--Hızlı Menü: Sol taraftaki sidebar üzerinden kullanıcı; "Profilim", "Rezervasyonlarım" ve "Yorumlarım" gibi kendine özel alanlara hızlıca erişebilir.
-
 ### ⚡ Teknik Detaylar:
--Sidebar Entegrasyonu: Dil desteği sadece giriş sayfalarını değil, tüm Sidebar (kenar çubuğu) menülerini de kapsamaktadır. Kullanıcı dil değiştirdiğinde tüm yönetim paneli menüleri seçilen dile göre dinamik olarak güncellenir.
--Veri Senkronizasyonu: Dashboard üzerindeki sayılar, kullanıcının veritabanındaki Reservations ve Comments tablolarındaki kendine ait verilerin anlık sayılmasıyla (Count) oluşur.
--Rol Bazlı Yetkilendirme: Giriş yapan kullanıcının rolü Admin ise, Sidebar üzerinde ek yönetim butonu (Admin Paneline Geç) dinamik olarak aktifleşir ve görünür olur.
+-Sidebar Entegrasyonu: Dil desteği sadece giriş sayfalarını değil, tüm Sidebar (kenar çubuğu) menülerini de kapsamaktadır. Kullanıcı dil değiştirdiğinde tüm yönetim paneli menüleri seçilen dile göre dinamik olarak güncellenir.<br>
+-Veri Senkronizasyonu: Dashboard üzerindeki sayılar, kullanıcının veritabanındaki Reservations ve Comments tablolarındaki kendine ait verilerin anlık sayılmasıyla (Count) oluşur.<br>
+-Rol Bazlı Yetkilendirme: Giriş yapan kullanıcının rolü Admin ise, Sidebar üzerinde ek yönetim butonu (Admin Paneline Geç) dinamik olarak aktifleşir ve görünür olur.<br>
 <img width="1917" height="907" alt="14" src="https://github.com/user-attachments/assets/41e98ad4-32f9-4d3a-882a-a0925235b0c4" />
 
 ### 👤 Profil Güncelleme Sayfası
--Kullanıcının sistemdeki kişisel bilgilerini ve görselini özelleştirebildiği bölümdür:
--Identity Veri Güncelleme: UserEditViewModel aracılığıyla kullanıcının adı, soyadı, e-posta ve şifre gibi bilgileri Identity altyapısı kullanılarak güvenli bir şekilde güncellenir.
--Profil Fotoğrafı Yükleme: Kullanıcılar kendi fotoğraflarını sisteme yükleyebilir. Yüklenen görseller sunucu tarafında benzersiz isimlerle (Guid) saklanır ve veritabanındaki ImageUrl alanına kaydedilir.
--Güvenli Şifre Yenileme: Şifre değişikliği yapılmak istendiğinde, Identity'nin şifreleme algoritmaları yeni şifreyi otomatik olarak hashleyerek güvenliği sağlar.
+-Kullanıcının sistemdeki kişisel bilgilerini ve görselini özelleştirebildiği bölümdür.<br>
+-Identity Veri Güncelleme: UserEditViewModel aracılığıyla kullanıcının adı, soyadı, e-posta ve şifre gibi bilgileri Identity altyapısı kullanılarak güvenli bir şekilde güncellenir.<br>
+-Profil Fotoğrafı Yükleme: Kullanıcılar kendi fotoğraflarını sisteme yükleyebilir. Yüklenen görseller sunucu tarafında benzersiz isimlerle (Guid) saklanır ve veritabanındaki ImageUrl alanına kaydedilir.<br>
+-Güvenli Şifre Yenileme: Şifre değişikliği yapılmak istendiğinde, Identity'nin şifreleme algoritmaları yeni şifreyi otomatik olarak hashleyerek güvenliği sağlar.<br>
 <img width="1915" height="912" alt="15" src="https://github.com/user-attachments/assets/8859e7be-00f4-4cf9-a494-fb844dd16eba" />
 
 ### 📅 Aktif Rezervasyonlarım
--Kullanıcının yaptığı ve admin tarafından onaylanmış veya süreci devam eden güncel seyahat listesidir:
--Filtrelenmiş Veri Akışı: Veritabanındaki tüm rezervasyonlar içinden sadece o an giriş yapmış olan kullanıcıya (Logged-in User) ait ve durumu "Aktif/Onaylandı" olan veriler listelenir.
--Rota Detayları: Rezervasyon yapılan turun adı, kişi sayısı ve tarihi gibi bilgiler, Destination tablosuyla kurulan ilişki (Relationship) sayesinde anlık olarak çekilir.
--Durum Takibi: Kullanıcı, seyahatinin onay durumunu bu tablo üzerinden şeffaf bir şekilde takip edebilir.
+-Kullanıcının yaptığı ve admin tarafından onaylanmış veya süreci devam eden güncel seyahat listesidir.<br>
+-Filtrelenmiş Veri Akışı: Veritabanındaki tüm rezervasyonlar içinden sadece o an giriş yapmış olan kullanıcıya (Logged-in User) ait ve durumu "Aktif/Onaylandı" olan veriler listelenir.<br>
+-Rota Detayları: Rezervasyon yapılan turun adı, kişi sayısı ve tarihi gibi bilgiler, Destination tablosuyla kurulan ilişki (Relationship) sayesinde anlık olarak çekilir.<br>
+-Durum Takibi: Kullanıcı, seyahatinin onay durumunu bu tablo üzerinden şeffaf bir şekilde takip edebilir.<br>
 <img width="1918" height="910" alt="16" src="https://github.com/user-attachments/assets/b3a09614-4393-4ac3-884d-205869ddf90f" />
 
 ### ⏳ Onay Bekleyen Rezervasyonlarım
--Kullanıcının yaptığı başvuruların admin tarafından incelenme sürecini takip ettiği alandır:
--Süreç Şeffaflığı: Kullanıcı, admin onay verene kadar rezervasyonunu bu listede görür. Admin "Onayla" butonuna bastığı anda bu veri otomatik olarak Aktif Rezervasyonlar sekmesine taşınır.
--İlişkisel Veri Gösterimi: Include yapısı sayesinde rezervasyonun hangi rotaya ait olduğu, fiyatı ve tarihi gibi detaylar tek bir satırda kullanıcıya sunulur.
--Veri Tutarlılığı: Kullanıcı aynı tura mükerrer (tekrarlayan) hatalı kayıt açmasın diye bu listedeki veriler üzerinden kontrol mekanizmaları çalıştırılır.
+-Kullanıcının yaptığı başvuruların admin tarafından incelenme sürecini takip ettiği alandır.<br>
+-Süreç Şeffaflığı: Kullanıcı, admin onay verene kadar rezervasyonunu bu listede görür. Admin "Onayla" butonuna bastığı anda bu veri otomatik olarak Aktif Rezervasyonlar sekmesine taşınır.<br>
+-İlişkisel Veri Gösterimi: Include yapısı sayesinde rezervasyonun hangi rotaya ait olduğu, fiyatı ve tarihi gibi detaylar tek bir satırda kullanıcıya sunulur.<br>
+-Veri Tutarlılığı: Kullanıcı aynı tura mükerrer (tekrarlayan) hatalı kayıt açmasın diye bu listedeki veriler üzerinden kontrol mekanizmaları çalıştırılır.<br>
 <img width="1917" height="910" alt="17" src="https://github.com/user-attachments/assets/3289114d-7ff1-4f2b-a554-7eafc8d46b49" />
 
 ### ➕ Yeni Rezervasyon Oluşturma
--Kullanıcıların hayallerindeki seyahati planladıkları dinamik başvuru ekranıdır:
--Dinamik Rota Seçimi: Kullanıcılar, sistemdeki aktif destinasyonlar arasından seçim yapabilir. Bu liste arka planda DestinationManager üzerinden sadece aktif turları getirir.
--Akıllı Kapasite Kontrolü: Rezervasyon sırasında seçilen kişi sayısı, veritabanındaki turun toplam kapasitesiyle uyumlu olacak şekilde (Validation) denetlenir.
--Otomatik Durum Atama: Form gönderildiği anda rezervasyonun statüsü kod tarafında otomatik olarak "Onay Bekliyor" (Pending) olarak atanır ve adminin onay listesine düşer.
+-Kullanıcıların hayallerindeki seyahati planladıkları dinamik başvuru ekranıdır.<br>
+-Dinamik Rota Seçimi: Kullanıcılar, sistemdeki aktif destinasyonlar arasından seçim yapabilir. Bu liste arka planda DestinationManager üzerinden sadece aktif turları getirir.<br>
+-Akıllı Kapasite Kontrolü: Rezervasyon sırasında seçilen kişi sayısı, veritabanındaki turun toplam kapasitesiyle uyumlu olacak şekilde (Validation) denetlenir.<br>
+-Otomatik Durum Atama: Form gönderildiği anda rezervasyonun statüsü kod tarafında otomatik olarak "Onay Bekliyor" (Pending) olarak atanır ve adminin onay listesine düşer.<br>
 <img width="1917" height="912" alt="18" src="https://github.com/user-attachments/assets/75fdd0e7-9024-44e9-8d7d-70e34cc37e4f" />
 
 
 ### 💬 Kullanıcının Yaptığı Yorumlar
--Gezginin tur deneyimleri sonrası paylaştığı fikirlerin yönetim merkezidir:
--Kişisel Yorum Arşivi: Sadece o an oturum açmış olan kullanıcıya ait yorumlar listelenir. Kullanıcı, hangi rotaya ne zaman yorum yaptığını ve yorumunun içeriğini buradan takip edebilir.
--Onay Durumu Takibi: Admin tarafından henüz onaylanmamış yorumlar "Beklemede" statüsüyle görünür. Onaylandığı anda tur detay sayfasında herkes tarafından görülebilir hale gelir.
--CRUD Operasyonları: Kullanıcı, kendi yaptığı yorumları bu panel üzerinden silme veya güncelleme yetkisine sahiptir.
+-Gezginin tur deneyimleri sonrası paylaştığı fikirlerin yönetim merkezidir.<br>
+-Kişisel Yorum Arşivi: Sadece o an oturum açmış olan kullanıcıya ait yorumlar listelenir. Kullanıcı, hangi rotaya ne zaman yorum yaptığını ve yorumunun içeriğini buradan takip edebilir.<br>
+-Onay Durumu Takibi: Admin tarafından henüz onaylanmamış yorumlar "Beklemede" statüsüyle görünür. Onaylandığı anda tur detay sayfasında herkes tarafından görülebilir hale gelir.<br>
+-CRUD Operasyonları: Kullanıcı, kendi yaptığı yorumları bu panel üzerinden silme veya güncelleme yetkisine sahiptir.<br>
 <img width="1916" height="910" alt="19" src="https://github.com/user-attachments/assets/680e495a-a574-4a03-a469-9a43fe4f0390" />
 
 ### 🗺️ Sitedeki Aktif ve Son Rotalar
@@ -103,89 +98,89 @@ Sistemin güvenlik ve kullanıcı yönetim merkezi olan bu bölümde, modern kim
 
 
 ## 🛠️ Admin Sayfaları (Yönetim & Kontrol Paneli)
--Bu kısım, misafirlerin web sitesine girdiğinde karşılaştığı "Vitrin" kısmıdır:
--İstatistiksel Dashboard: Toplam rota sayısı, bekleyen rezervasyonlar ve kullanıcı sayıları anlık verilerle takip edilir.
--Yorum Yönetimi: Gelen tüm kullanıcı yorumları burada listelenir. Admin, uygunsuz içerikleri silebilir veya yorumları yayına alabilir.
--Dinamik Rota Yönetimi: Yeni tur rotaları ekleme, fiyat güncelleme ve kapasite kontrolü bu panelden yapılır.
+-Bu kısım, misafirlerin web sitesine girdiğinde karşılaştığı "Vitrin" kısmıdır.<br>
+-İstatistiksel Dashboard: Toplam rota sayısı, bekleyen rezervasyonlar ve kullanıcı sayıları anlık verilerle takip edilir.<br>
+-Yorum Yönetimi: Gelen tüm kullanıcı yorumları burada listelenir. Admin, uygunsuz içerikleri silebilir veya yorumları yayına alabilir.<br>
+-Dinamik Rota Yönetimi: Yeni tur rotaları ekleme, fiyat güncelleme ve kapasite kontrolü bu panelden yapılır.<br>
 <img width="1915" height="912" alt="22" src="https://github.com/user-attachments/assets/ac501c8f-17b9-437e-8a9b-1f3b65e906f7" />
 <img width="1902" height="633" alt="23" src="https://github.com/user-attachments/assets/f3687214-7a2f-40f5-9c22-3730c91e2eb3" />
 
 ### 💬 Tüm Kullanıcı Yorumları Yönetimi
--Admin panelinin bu bölümünde, site genelinde yapılmış olan tüm kullanıcı yorumları merkezi bir tabloda listelenir:
--İlişkisel Veri Gösterimi: Yorumu yapan kullanıcının adı ve yorumun yapıldığı rota bilgisi (Destination), Entity Framework Include yapısı sayesinde tek bir satırda birleştirilerek gösterilir.
-Tam Kontrol: Admin, bu ekran üzerinden gelen tüm geri bildirimleri inceleyebilir, uygunsuz içerikleri silecek veya onaylayacak yetkiye sahiptir.
+-Admin panelinin bu bölümünde, site genelinde yapılmış olan tüm kullanıcı yorumları merkezi bir tabloda listelenir.<br>
+-İlişkisel Veri Gösterimi: Yorumu yapan kullanıcının adı ve yorumun yapıldığı rota bilgisi (Destination), Entity Framework Include yapısı sayesinde tek bir satırda birleştirilerek gösterilir.<br>
+Tam Kontrol: Admin, bu ekran üzerinden gelen tüm geri bildirimleri inceleyebilir, uygunsuz içerikleri silecek veya onaylayacak yetkiye sahiptir.<br>
 <img width="1915" height="905" alt="24" src="https://github.com/user-attachments/assets/e7f5a092-aa72-47a0-ab5a-4f77c746b63e" />
 
 ### 📍 Rota (Destinasyon) Listesi ve Kontrolü
--Sistemdeki tüm tur rotalarının admin tarafındaki ana kumanda merkezidir:
--Detaylı Rota Takibi: Şehir ismi, tur fiyatı, kişi kapasitesi ve turun aktiflik durumu gibi tüm kritik veriler bu tabloda sergilenir.
--Hızlı Aksiyonlar: Admin, mevcut rotaları güncelleyebilir, silebilir veya yeni bir rota eklemek için bu listeyi referans alarak sistemdeki boşlukları analiz edebilir.
--Dinamik Veri Akışı: Burada yapılan her güncelleme, ana sayfadaki "Popüler Rotalar" kısmına anlık olarak yansır.
+-Sistemdeki tüm tur rotalarının admin tarafındaki ana kumanda merkezidir.<br>
+-Detaylı Rota Takibi: Şehir ismi, tur fiyatı, kişi kapasitesi ve turun aktiflik durumu gibi tüm kritik veriler bu tabloda sergilenir.<br>
+-Hızlı Aksiyonlar: Admin, mevcut rotaları güncelleyebilir, silebilir veya yeni bir rota eklemek için bu listeyi referans alarak sistemdeki boşlukları analiz edebilir.<br>
+-Dinamik Veri Akışı: Burada yapılan her güncelleme, ana sayfadaki "Popüler Rotalar" kısmına anlık olarak yansır.<br>
 <img width="1917" height="912" alt="25" src="https://github.com/user-attachments/assets/dd5fb0ce-9a8b-42b5-8475-fc838e6a3351" />
 
 ### 👥 Kullanıcı (Üye) Yönetim Listesi
--Sisteme kayıt olan tüm misafirlerin kontrol edildiği ve yönetildiği merkezdir:
--Identity Altyapısı: Tüm kullanıcı verileri ASP.NET Core Identity tablosundan çekilerek; isim, soyisim, kullanıcı adı ve e-posta gibi detaylarla listelenir.
--Rol ve Durum Takibi: Admin, bu liste üzerinden hangi kullanıcının aktif olduğunu görebilir ve üye bazlı yetkilendirme işlemlerini bu veriler ışığında planlayabilir.
--Hızlı Erişim: Binlerce kullanıcı olsa dahi, veritabanı seviyesinde optimize edilmiş sorgularla üyeler hızlıca listelenir.
--Kullanıcının yapmış olduğu yorumlar ve gittiği tur listesine erişim mümkündür.
+-Sisteme kayıt olan tüm misafirlerin kontrol edildiği ve yönetildiği merkezdir.<br>
+-Identity Altyapısı: Tüm kullanıcı verileri ASP.NET Core Identity tablosundan çekilerek; isim, soyisim, kullanıcı adı ve e-posta gibi detaylarla listelenir.<br>
+-Rol ve Durum Takibi: Admin, bu liste üzerinden hangi kullanıcının aktif olduğunu görebilir ve üye bazlı yetkilendirme işlemlerini bu veriler ışığında planlayabilir.<br<
+-Hızlı Erişim: Binlerce kullanıcı olsa dahi, veritabanı seviyesinde optimize edilmiş sorgularla üyeler hızlıca listelenir.<br>
+-Kullanıcının yapmış olduğu yorumlar ve gittiği tur listesine erişim mümkündür.<br>
 <img width="1909" height="905" alt="26" src="https://github.com/user-attachments/assets/6ec129f1-dca2-455d-b18e-6f19120e8fd9" />
 
 ### ✉️ "Bize Ulaşın" Mesaj Yönetimi
--Ziyaretçilerin iletişim formu aracılığıyla gönderdiği tüm mesajların admin panelindeki karşılığıdır:
--Mesaj Arşivi: Gönderen kişinin adı, e-posta adresi, mesajın konusu ve içeriği kronolojik olarak sıralanır.
--Geri Bildirim Kontrolü: Admin, gelen talepleri, şikayetleri veya iş birliği mesajlarını tek bir panelden okuyabilir ve gerekli aksiyonları (cevaplama, silme, arşivleme) alabilir.
--AJAX Senkronizasyonu: Site tarafında AJAX ile gönderilen mesajlar, anında bu listeye düşer ve sayfa yenilemeye gerek kalmadan veritabanı bütünlüğü sağlanır.
+-Ziyaretçilerin iletişim formu aracılığıyla gönderdiği tüm mesajların admin panelindeki karşılığıdır.<br>
+-Mesaj Arşivi: Gönderen kişinin adı, e-posta adresi, mesajın konusu ve içeriği kronolojik olarak sıralanır.<br>
+-Geri Bildirim Kontrolü: Admin, gelen talepleri, şikayetleri veya iş birliği mesajlarını tek bir panelden okuyabilir ve gerekli aksiyonları (cevaplama, silme, arşivleme) alabilir.<br>
+-AJAX Senkronizasyonu: Site tarafında AJAX ile gönderilen mesajlar, anında bu listeye düşer ve sayfa yenilemeye gerek kalmadan veritabanı bütünlüğü sağlanır.<br>
 <img width="1917" height="912" alt="27" src="https://github.com/user-attachments/assets/310895a4-8bda-4dd2-ab89-50e32d46218e" />
 <img width="1915" height="913" alt="28" src="https://github.com/user-attachments/assets/ab324ecc-3766-404b-8c13-e06aea558837" />
 
 ### 🎖️ Rehber Yönetimi ve Uzman Kadro Listesi
--Sistemin dinamik yapısını sağlayan rehberlerin admin tarafındaki yönetim merkezidir:
--Aktif/Pasif Durum Yönetimi: Admin, rehberlerin sistemdeki durumunu (Aktif/Pasif) tek tıkla güncelleyebilir. Bu durum değişikliği, ana sayfadaki "Rehberlerimiz" kısmına anlık olarak yansır.
--Görsel ve Bilgi Güncelleme: Rehberlerin fotoğrafları, uzmanlık alanları ve sosyal medya linkleri bu panel üzerinden kontrol edilir.
--Veri Bütünlüğü: Rehber tablosu, destinasyonlar ile ilişkili olduğu için hangi turun hangi rehberde olduğu bilgisi bu veri yapısı üzerinden yönetilir.
+-Sistemin dinamik yapısını sağlayan rehberlerin admin tarafındaki yönetim merkezidir.<br>
+-Aktif/Pasif Durum Yönetimi: Admin, rehberlerin sistemdeki durumunu (Aktif/Pasif) tek tıkla güncelleyebilir. Bu durum değişikliği, ana sayfadaki "Rehberlerimiz" kısmına anlık olarak yansır.<br>
+-Görsel ve Bilgi Güncelleme: Rehberlerin fotoğrafları, uzmanlık alanları ve sosyal medya linkleri bu panel üzerinden kontrol edilir.<br>
+-Veri Bütünlüğü: Rehber tablosu, destinasyonlar ile ilişkili olduğu için hangi turun hangi rehberde olduğu bilgisi bu veri yapısı üzerinden yönetilir.<br>
 <img width="1916" height="913" alt="29" src="https://github.com/user-attachments/assets/59913bc3-3c1e-4b38-a77c-ef5a048cf284" />
 
 ### 📊 Excel Raporlama ve Veri Aktarımı
--Projenin profesyonel raporlama kabiliyetini gösteren, verilerin dış dünyaya açıldığı bölümdür:
--Statik ve Dinamik Excel Raporları: Sistemdeki veriler (Rotalar, Kullanıcılar, Rezervasyonlar) ClosedXML veya EPPlus kütüphaneleri kullanılarak tek tıkla profesyonel bir Excel dosyasına dönüştürülür.
--Anlık Veri Çıktısı: Veritabanındaki güncel tablo verileri, sütun başlıklarıyla birlikte düzenli bir şekilde raporlanır. Bu özellik, yöneticilerin sistem dışı analizler yapmasına olanak tanır.
--Hızlı İndirme: Dosya oluşturma işlemi sunucu tarafında (Server-side) hızlıca tamamlanarak kullanıcıya bir FileStreamResult olarak döndürülür.
+-Projenin profesyonel raporlama kabiliyetini gösteren, verilerin dış dünyaya açıldığı bölümdür.<br>
+-Statik ve Dinamik Excel Raporları: Sistemdeki veriler (Rotalar, Kullanıcılar, Rezervasyonlar) ClosedXML veya EPPlus kütüphaneleri kullanılarak tek tıkla profesyonel bir Excel dosyasına dönüştürülür.<br>
+-Anlık Veri Çıktısı: Veritabanındaki güncel tablo verileri, sütun başlıklarıyla birlikte düzenli bir şekilde raporlanır. Bu özellik, yöneticilerin sistem dışı analizler yapmasına olanak tanır.<br>
+-Hızlı İndirme: Dosya oluşturma işlemi sunucu tarafında (Server-side) hızlıca tamamlanarak kullanıcıya bir FileStreamResult olarak döndürülür.<br>
 <img width="1912" height="907" alt="30" src="https://github.com/user-attachments/assets/181bd9c1-6dbc-4213-bb5b-c1c89cf39a2f" />
 
 ### 📧 Yeni Mail Gönderim Merkezi
--Adminin sistem üzerinden kullanıcılara veya harici adreslere doğrudan e-posta gönderebildiği modüldür:
--SMTP Entegrasyonu: Arka planda MailKit kütüphanesi kullanılarak Google (Gmail) veya özel SMTP sunucuları üzerinden güvenli e-posta gönderimi sağlanır.
--Dinamik İçerik: Alıcı adresi, konu başlığı ve mesaj içeriği admin tarafından belirlenerek profesyonel bir iletişim kanalı oluşturulur.
--İşlevsellik: Kampanyalar, tur bilgilendirmeleri veya bireysel geri dönüşler için admin panelinden ayrılmadan hızlıca aksiyon alınmasına imkan tanır.
+-Adminin sistem üzerinden kullanıcılara veya harici adreslere doğrudan e-posta gönderebildiği modüldür.<br>
+-SMTP Entegrasyonu: Arka planda MailKit kütüphanesi kullanılarak Google (Gmail) veya özel SMTP sunucuları üzerinden güvenli e-posta gönderimi sağlanır.<br>
+-Dinamik İçerik: Alıcı adresi, konu başlığı ve mesaj içeriği admin tarafından belirlenerek profesyonel bir iletişim kanalı oluşturulur.<br>
+-İşlevsellik: Kampanyalar, tur bilgilendirmeleri veya bireysel geri dönüşler için admin panelinden ayrılmadan hızlıca aksiyon alınmasına imkan tanır.<br>
 <img width="1914" height="910" alt="31" src="https://github.com/user-attachments/assets/ec330da1-a48e-4317-a878-5e4e6663457d" />
 
 ### 🤝 Referans ve İş Ortakları Yönetimi
--Web sitesinin güven vitrini olan "Mutlu Müşteriler ve Referanslar" bölümünün dinamik olarak yönetildiği alandır:
--Kurumsal Görünüm: Sisteme yeni iş ortakları veya referans logoları eklendiğinde, ana sayfadaki slider yapısı bu verileri otomatik olarak çeker ve sergiler.
--Görsel Yönetimi: Referansların isimleri ve logoları bu panel üzerinden güncellenebilir, aktif veya pasif duruma getirilebilir.
--Marka Algısı: Admin, bu liste sayesinde sitenin profesyonel görünümünü ve sosyal kanıt (social proof) öğelerini dilediği zaman güncel tutabilir.
+-Web sitesinin güven vitrini olan "Mutlu Müşteriler ve Referanslar" bölümünün dinamik olarak yönetildiği alandır.<br>
+-Kurumsal Görünüm: Sisteme yeni iş ortakları veya referans logoları eklendiğinde, ana sayfadaki slider yapısı bu verileri otomatik olarak çeker ve sergiler.<br>
+-Görsel Yönetimi: Referansların isimleri ve logoları bu panel üzerinden güncellenebilir, aktif veya pasif duruma getirilebilir.<br>
+-Marka Algısı: Admin, bu liste sayesinde sitenin profesyonel görünümünü ve sosyal kanıt (social proof) öğelerini dilediği zaman güncel tutabilir.<br>
 <img width="1915" height="907" alt="32" src="https://github.com/user-attachments/assets/6f97355f-2147-419d-9a90-56765b6ad6d5" />
 
 ### 📅 Tüm Rezervasyonların Yönetimi ve Takibi
--Sistem üzerinden gerçekleştirilen tüm tur başvurularının merkezi olarak izlendiği ve durumlarının güncellendiği bölümdür:
--Onay Mekanizması: Gelen rezervasyonlar "Onay Bekliyor", "Onaylandı" veya "İptal Edildi" gibi statülerle yönetilir. Admin, bu panel üzerinden tek tıkla rezervasyonun durumunu güncelleyebilir.
--İlişkisel Veri Gösterimi: Rezervasyon tablosu; AppUser (Müşteri) ve Destination (Rota) tablolarıyla ilişkilidir. Bu sayede hangi müşterinin hangi tur için kaç kişilik yer ayırttığı anlık olarak listelenir.
--Kapasite Kontrolü: Yapılan her yeni rezervasyon, ilgili rotanın kontenjanından otomatik olarak düşülür veya eklenir, böylece sistem genelinde veri tutarlılığı sağlanır.
+-Sistem üzerinden gerçekleştirilen tüm tur başvurularının merkezi olarak izlendiği ve durumlarının güncellendiği bölümdür.<br>
+-Onay Mekanizması: Gelen rezervasyonlar "Onay Bekliyor", "Onaylandı" veya "İptal Edildi" gibi statülerle yönetilir. Admin, bu panel üzerinden tek tıkla rezervasyonun durumunu güncelleyebilir.<br>
+-İlişkisel Veri Gösterimi: Rezervasyon tablosu; AppUser (Müşteri) ve Destination (Rota) tablolarıyla ilişkilidir. Bu sayede hangi müşterinin hangi tur için kaç kişilik yer ayırttığı anlık olarak listelenir.<br>
+-Kapasite Kontrolü: Yapılan her yeni rezervasyon, ilgili rotanın kontenjanından otomatik olarak düşülür veya eklenir, böylece sistem genelinde veri tutarlılığı sağlanır.<br>
 <img width="1913" height="908" alt="33" src="https://github.com/user-attachments/assets/a8774314-20e3-47fe-b274-656625ed17be" />
 
 ### 🔐 Admin Şifre Değiştirme ve Güvenlik Yönetimi
--Yöneticinin kendi hesap güvenliğini sağlaması için tasarlanmış, Identity altyapısını kullanan özel bir modüldür:
--Identity Password Validator: Yeni şifre belirlenirken sistem, belirlenen güvenlik kriterlerini (Büyük harf, küçük harf, rakam ve sembol zorunluluğu) otomatik olarak denetler.
--Hashleme Teknolojisi: Şifreler veritabanına asla düz metin olarak kaydedilmez; Identity'nin PasswordHasher sınıfı ile geri döndürülemez şekilde hash'lenerek saklanır.
--Anlık Doğrulama: Mevcut şifrenin doğruluğu kontrol edildikten sonra yeni şifre ataması yapılır, böylece hesap güvenliği en üst düzeyde tutulur.
+-Yöneticinin kendi hesap güvenliğini sağlaması için tasarlanmış, Identity altyapısını kullanan özel bir modüldür.<br>
+-Identity Password Validator: Yeni şifre belirlenirken sistem, belirlenen güvenlik kriterlerini (Büyük harf, küçük harf, rakam ve sembol zorunluluğu) otomatik olarak denetler.<br>
+-Hashleme Teknolojisi: Şifreler veritabanına asla düz metin olarak kaydedilmez; Identity'nin PasswordHasher sınıfı ile geri döndürülemez şekilde hash'lenerek saklanır.<br>
+-Anlık Doğrulama: Mevcut şifrenin doğruluğu kontrol edildikten sonra yeni şifre ataması yapılır, böylece hesap güvenliği en üst düzeyde tutulur.<br>
 <img width="1913" height="910" alt="34" src="https://github.com/user-attachments/assets/52ff9f7b-3328-476a-8708-bdffd8cd1193" />
 
 ### 🔑 Rol Yönetimi ve Yetkilendirme (RBAC)
--Sistemdeki tüm kullanıcıların yetki seviyelerinin belirlendiği, tam denetimli yönetim merkezidir:
--Dinamik Rol Atama: Admin, sistemdeki herhangi bir kullanıcıyı seçerek ona "Admin", "Rehber" veya "Üye" gibi roller tanımlayabilir. Bu işlem arka planda UserManager.AddToRoleAsync ve RemoveFromRoleAsync metotları ile yönetilir.
--Rol Ekleme ve Silme: Sisteme yeni bir yetki seviyesi (Örn: Moderatör) eklemek veya mevcut bir rolü sistemden kaldırmak bu panel üzerinden gerçekleştirilir.
--Güvenlik Katmanı: Yapılan rol değişiklikleri, kullanıcının sisteme bir sonraki girişinde (veya Cookie güncellendiğinde) anında aktif olur. Böylece yetkisiz kişilerin kritik alanlara erişimi dinamik olarak engellenir.
+-Sistemdeki tüm kullanıcıların yetki seviyelerinin belirlendiği, tam denetimli yönetim merkezidir.<br>
+-Dinamik Rol Atama: Admin, sistemdeki herhangi bir kullanıcıyı seçerek ona "Admin", "Rehber" veya "Üye" gibi roller tanımlayabilir. Bu işlem arka planda UserManager.AddToRoleAsync ve RemoveFromRoleAsync metotları ile yönetilir.<br>
+-Rol Ekleme ve Silme: Sisteme yeni bir yetki seviyesi (Örn: Moderatör) eklemek veya mevcut bir rolü sistemden kaldırmak bu panel üzerinden gerçekleştirilir.<br>
+-Güvenlik Katmanı: Yapılan rol değişiklikleri, kullanıcının sisteme bir sonraki girişinde (veya Cookie güncellendiğinde) anında aktif olur. Böylece yetkisiz kişilerin kritik alanlara erişimi dinamik olarak engellenir.<br>
 <img width="1916" height="909" alt="35" src="https://github.com/user-attachments/assets/2275928b-ee85-43f8-8597-c24827eb6ace" />
 
 
