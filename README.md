@@ -89,16 +89,16 @@ Sistemin güvenlik ve kullanıcı yönetim merkezi olan bu bölümde, modern kim
 <img width="1916" height="910" alt="19" src="https://github.com/user-attachments/assets/680e495a-a574-4a03-a469-9a43fe4f0390" />
 
 ### 🗺️ Sitedeki Aktif ve Son Rotalar
--Kullanıcı panelinden çıkmadan sistemdeki en yeni seyahat fırsatlarının sergilendiği alandır:
--Aktif Rotalar Listesi: Destination tablosundaki Status alanı "True" olan tüm turlar; fiyat, kapasite ve rehber bilgisiyle birlikte kullanıcıya sunulur.
--Son Rotalar (Recently Added): Veritabanına eklenen en son 4 veya 5 rota, "Yeni" etiketiyle listelenerek kullanıcının ilgisine sunulur. Bu işlem OrderByDescending(x => x.DestinationID).Take(5) mantığı ile veritabanı seviyesinde optimize edilmiştir.
--Hızlı Rezervasyon Köprüsü: Kullanıcı, bu listede ilgisini çeken bir rotayı gördüğünde doğrudan "Yeni Rezervasyon" sayfasına yönlenerek işlemini tamamlayabilir.
+-Kullanıcı panelinden çıkmadan sistemdeki en yeni seyahat fırsatlarının sergilendiği alandır<br>
+-Aktif Rotalar Listesi: Destination tablosundaki Status alanı "True" olan tüm turlar; fiyat, kapasite ve rehber bilgisiyle birlikte kullanıcıya sunulur.<br>
+-Son Rotalar (Recently Added): Veritabanına eklenen en son 4 veya 5 rota, "Yeni" etiketiyle listelenerek kullanıcının ilgisine sunulur. Bu işlem OrderByDescending(x => x.DestinationID).Take(5) mantığı ile veritabanı seviyesinde optimize edilmiştir.<br>
+-Hızlı Rezervasyon Köprüsü: Kullanıcı, bu listede ilgisini çeken bir rotayı gördüğünde doğrudan "Yeni Rezervasyon" sayfasına yönlenerek işlemini tamamlayabilir.<br>
 <img width="1918" height="905" alt="20" src="https://github.com/user-attachments/assets/6b6b4eb0-a959-48ca-a6d0-ff1c5ac059d4" />
 <img width="1918" height="906" alt="21" src="https://github.com/user-attachments/assets/5ada0efc-d090-4272-9332-4af447bc98f1" />
 
 
 ## 🛠️ Admin Sayfaları (Yönetim & Kontrol Paneli)
--Bu kısım, misafirlerin web sitesine girdiğinde karşılaştığı "Vitrin" kısmıdır.<br>
+-Bu kısım, admin girişi olduktan sonra karşılaştığı "Vitrin" kısmıdır.<br>
 -İstatistiksel Dashboard: Toplam rota sayısı, bekleyen rezervasyonlar ve kullanıcı sayıları anlık verilerle takip edilir.<br>
 -Yorum Yönetimi: Gelen tüm kullanıcı yorumları burada listelenir. Admin, uygunsuz içerikleri silebilir veya yorumları yayına alabilir.<br>
 -Dinamik Rota Yönetimi: Yeni tur rotaları ekleme, fiyat güncelleme ve kapasite kontrolü bu panelden yapılır.<br>
@@ -121,7 +121,7 @@ Tam Kontrol: Admin, bu ekran üzerinden gelen tüm geri bildirimleri inceleyebil
 ### 👥 Kullanıcı (Üye) Yönetim Listesi
 -Sisteme kayıt olan tüm misafirlerin kontrol edildiği ve yönetildiği merkezdir.<br>
 -Identity Altyapısı: Tüm kullanıcı verileri ASP.NET Core Identity tablosundan çekilerek; isim, soyisim, kullanıcı adı ve e-posta gibi detaylarla listelenir.<br>
--Rol ve Durum Takibi: Admin, bu liste üzerinden hangi kullanıcının aktif olduğunu görebilir ve üye bazlı yetkilendirme işlemlerini bu veriler ışığında planlayabilir.<br<
+-Rol ve Durum Takibi: Admin, bu liste üzerinden hangi kullanıcının aktif olduğunu görebilir ve üye bazlı yetkilendirme işlemlerini bu veriler ışığında planlayabilir.<br>
 -Hızlı Erişim: Binlerce kullanıcı olsa dahi, veritabanı seviyesinde optimize edilmiş sorgularla üyeler hızlıca listelenir.<br>
 -Kullanıcının yapmış olduğu yorumlar ve gittiği tur listesine erişim mümkündür.<br>
 <img width="1909" height="905" alt="26" src="https://github.com/user-attachments/assets/6ec129f1-dca2-455d-b18e-6f19120e8fd9" />
