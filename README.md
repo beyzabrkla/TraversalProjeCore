@@ -47,7 +47,7 @@ Sistemin güvenlik ve kullanıcı yönetim merkezi olan bu bölümde, modern kim
 -Kullanıcıların kendi verilerini takip ettiği, şık ve fonksiyonel yönetim merkezidir.
 
 ### ⚡ Teknik Detaylar:
--Sidebar Entegrasyonu: Dil desteği sadece giriş sayfalarını değil, tüm Sidebar (kenar çubuğu) menülerini de kapsamaktadır. Kullanıcı dil değiştirdiğinde tüm yönetim paneli menüleri seçilen dile göre dinamik olarak güncellenir.<br>
+-Sidebar Entegrasyonu: Kullanıcı dil değiştirdiğinde tüm yönetim paneli menüleri seçilen dile göre dinamik olarak güncellenir.<br>
 -Veri Senkronizasyonu: Dashboard üzerindeki sayılar, kullanıcının veritabanındaki Reservations ve Comments tablolarındaki kendine ait verilerin anlık sayılmasıyla (Count) oluşur.<br>
 -Rol Bazlı Yetkilendirme: Giriş yapan kullanıcının rolü Admin ise, Sidebar üzerinde ek yönetim butonu (Admin Paneline Geç) dinamik olarak aktifleşir ve görünür olur.<br>
 <img width="1917" height="907" alt="14" src="https://github.com/user-attachments/assets/41e98ad4-32f9-4d3a-882a-a0925235b0c4" />
