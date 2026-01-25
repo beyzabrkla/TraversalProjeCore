@@ -3,10 +3,12 @@ using BusinessLayer.Concrete;
 using DataAccessLayer.Abstract;
 using DataAccessLayer.EntityFramework;
 using EntityLayer.Concrete;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace TraversalProjeCore.Areas.Admin.Controllers
 {
+    [Authorize]
     [Area("Admin")]
     public class DestinationController : Controller
     {

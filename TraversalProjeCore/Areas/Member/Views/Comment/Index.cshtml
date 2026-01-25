@@ -4,7 +4,7 @@
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_MemberLayout.cshtml";
-    int count = 0;
+    int count = 0; 
 }
 
 <div class="row">
@@ -15,12 +15,12 @@
             </div>
             <div class="card-content collapse show">
                 <div class="card-body">
-                    <p class="card-text">Traversal web sitemizdeki rotalara yaptığınız tüm yorumları aşağıdan görebilirsiniz.</p>
+                    <p class="card-text">Yaptığınız yorumlar en yeniden en eskiye doğru sıralanmıştır.</p>
                     <div class="table-responsive">
                         <table class="table">
                             <thead>
                                 <tr>
-                                    <th>#</th>
+                                    <th>#</th> 
                                     <th>Rota</th>
                                     <th>İçerik</th>
                                     <th>Tarih</th>
@@ -30,20 +30,19 @@
                             <tbody>
                                 @foreach (var item in Model)
                                 {
-                                    count++; @* Her döngüde sayı 1 artar *@
-                                    <tr>
-                                        @* Artık karmaşık ID'ler yerine (18, 19) düzenli sayı görünecek *@
-                                        <th>@count</th>
-                                        <td>@item.Destination.City</td>
-                                        <td>@item.CommentContent</td>
-                                        <td>@item.CommentDate.ToString("dd.MM.yyyy")</td>
-                                        <td>
-                                            <a href="/Member/Comment/ChangeStatus/@item.CommentId"
-                                               class="badge @(item.CommentState.GetValueOrDefault() ? "badge-success" : "badge-danger")">
-                                                @(item.CommentState.GetValueOrDefault() ? "Aktif" : "Pasif")
-                                            </a>
-                                        </td>
-                                    </tr>
+                                    count++;
+                                             <tr>
+                                                 <th>@count</th>
+                                                 <td>@item.Destination.City</td>
+                                                 <td>@item.CommentContent</td>
+                                                 <td>@item.CommentDate.ToString("dd.MM.yyyy")</td>
+                                                 <td>
+                                                     <a href="/Member/Comment/ChangeStatus/@item.CommentId"
+                                                        class="badge @(item.CommentState.GetValueOrDefault() ? "badge-success" : "badge-danger")">
+                                                         @(item.CommentState.GetValueOrDefault() ? "Aktif" : "Pasif")
+                                                     </a>
+                                                 </td>
+                                             </tr>
                                 }
                             </tbody>
                         </table>

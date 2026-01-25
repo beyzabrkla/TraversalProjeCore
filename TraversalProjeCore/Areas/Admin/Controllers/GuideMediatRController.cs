@@ -6,7 +6,7 @@ using TraversalProjeCore.CQRS.Queries.GuideQueries;
 
 namespace TraversalProjeCore.Areas.Admin.Controllers
 {
-    [AllowAnonymous]
+    [Authorize]
     [Area("Admin")]
     public class GuideMediatRController : Controller
     {

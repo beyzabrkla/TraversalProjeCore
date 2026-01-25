@@ -1,0 +1,24 @@
+﻿@model PasswordChangeViewModel
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container">
+    <div class="card">
+        <h5 class="card-header">Şifre İşlemleri</h5>
+        <div class="card-body">
+            <form method="post">
+                <label>Mevcut Şifreniz</label>
+                <input type="password" asp-for="CurrentPassword" class="form-control" />
+                <br />
+                <label>Yeni Şifre</label>
+                <input type="password" asp-for="NewPassword" class="form-control" />
+                <br />
+                <label>Yeni Şifre Tekrar</label>
+                <input type="password" asp-for="ConfirmPassword" class="form-control" />
+                <br />
+                <button class="btn btn-primary">Şifreyi Güncelle</button>
+            </form>
+        </div>
+    </div>
+</div>

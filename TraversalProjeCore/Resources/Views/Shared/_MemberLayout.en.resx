@@ -147,4 +147,7 @@
   <data name="Geçmiş Rez" xml:space="preserve">
     <value>Old Reservation</value>
   </data>
+  <data name="Admin Paneline Git" xml:space="preserve">
+    <value>Go to Admin Panel</value>
+  </data>
 </root>

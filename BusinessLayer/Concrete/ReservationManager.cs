@@ -16,6 +16,11 @@ namespace BusinessLayer.Concrete
             _reservationDal = reservationDal;
         }
 
+        public List<Reservation> GetListAllWithTables()
+        {
+            return _reservationDal.GetListAllWithTables();
+        }
+
         public List<Reservation> GetListWithByReservationByAccepted(int id)
         {
             return _reservationDal.GetListByReservationByAccepted(id);
@@ -38,22 +43,27 @@ namespace BusinessLayer.Concrete
 
         public void TDelete(Reservation t)
         {
-            throw new NotImplementedException();
+            _reservationDal.Delete(t);
         }
 
         public Reservation TGetById(int id)
         {
-            throw new NotImplementedException();
+            return _reservationDal.GetById(id);
         }
 
         public List<Reservation> TGetList()
         {
-            throw new NotImplementedException();
+            return _reservationDal.GetListAllWithTables();
+        }
+
+        public List<Reservation> TGetListWithReservationByUserId(int id)
+        {
+            return _reservationDal.GetListWithReservationByUserId(id);
         }
 
         public void TUpdate(Reservation t)
         {
-            throw new NotImplementedException();
+            _reservationDal.Update(t);
         }
     }
 }

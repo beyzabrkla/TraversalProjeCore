@@ -1,11 +1,13 @@
 ﻿using BusinessLayer.Concrete;
 using DataAccessLayer.EntityFramework;
 using EntityLayer.Concrete;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace TraversalProjeCore.Areas.Member.Controllers
 {
+    [Authorize]
     [Area("Member")]
     public class CommentController : Controller
     {
@@ -20,7 +22,7 @@ namespace TraversalProjeCore.Areas.Member.Controllers
         public async Task<IActionResult> Index()
         {
             var user = await _userManager.FindByNameAsync(User.Identity.Name);
-
+            // DAL tarafında OrderByDescending eklediğimiz için burası otomatik sıralı gelecek
             var values = commentManager.TGetListCommentWithDestinationAndUser(user.Id);
             return View(values);
         }

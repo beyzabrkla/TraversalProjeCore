@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace TraversalProjeCore.Areas.Admin.Controllers
 {
-    [AllowAnonymous]
+    [Authorize]
     [Area("Admin")]
     public class CommentController : Controller
     {
@@ -19,7 +19,7 @@ namespace TraversalProjeCore.Areas.Admin.Controllers
 
         public IActionResult Index()
         {
-            var values  = _commentService.TGetListCommentWithDestination(); // Yorumları Destination bilgileri ile birlikte getir
+            var values = _commentService.TGetListCommentWithDestination();
             return View(values);
         }
 

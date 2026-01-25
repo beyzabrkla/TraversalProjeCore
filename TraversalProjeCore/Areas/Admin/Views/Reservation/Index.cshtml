@@ -1,0 +1,82 @@
+﻿@using EntityLayer.Concrete
+@model List<Reservation>
+@{
+    ViewData["Title"] = "Tüm Rezervasyonlar";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    int count = 0;
+}
+
+<style>
+    .table-responsive {
+        overflow: inherit !important;
+    }
+    .actions-column {
+        min-width: 150px;
+    }
+</style>
+
+<div class="card">
+    <h5 class="card-header">Sistemdeki Tüm Rezervasyonlar</h5>
+    <div class="table-responsive text-nowrap">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Misafir Ad Soyad</th>
+                    <th>Rota / Şehir</th>
+                    <th>Kişi</th>
+                    <th>Tarih</th>
+                    <th>Durum</th>
+                    <th>İşlemler</th>
+                </tr>
+            </thead>
+            <tbody class="table-border-bottom-0">
+                @foreach (var x in Model)
+                {
+                    count++;
+                    <tr>
+                        <td>@count</td>
+                        <td><strong>@x.AppUser.Name @x.AppUser.Surname</strong></td>
+                        <td>@x.Destination.City</td>
+                        <td>@x.PersonCount Kişi</td>
+                        <td>@(((DateTime)x.ReservationDate).ToString("dd-MMM-yyyy"))</td>
+                        <td>
+                            @if (x.Status == "Onaylandı")
+                            {
+                                <span class="badge bg-label-success">Onaylandı</span>
+                            }
+                            else if (x.Status == "Onay Bekliyor")
+                            {
+                                <span class="badge bg-label-warning">Onay Bekliyor</span>
+                            }
+                            else
+                            {
+                                <span class="badge bg-label-danger">@x.Status</span>
+                            }
+                        </td>
+                        <td>
+                            <div class="btn-group dropup">
+                                <button type="button" class="btn btn-sm btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    İşlemler
+                                </button>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item text-success" href="/Admin/Reservation/AcceptReservation/@x.ReservationId">
+                                        <i class="bx bx-check me-1"></i> Onayla
+                                    </a>
+                                    <a class="dropdown-item text-warning" href="/Admin/Reservation/RejectReservation/@x.ReservationId">
+                                        <i class="bx bx-x me-1"></i> İptal Et
+                                    </a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item text-danger" href="/Admin/Reservation/DeleteReservation/@x.ReservationId"
+                                       onclick="return confirm('Silmek istediğinize emin misiniz?')">
+                                        <i class="bx bx-trash me-1"></i> Sil
+                                    </a>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

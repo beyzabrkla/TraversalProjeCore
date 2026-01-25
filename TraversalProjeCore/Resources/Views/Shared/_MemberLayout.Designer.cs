@@ -61,6 +61,15 @@ namespace TraversalProjeCore.Resources.Views.Shared {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Admin Paneline Git.
+        /// </summary>
+        public static string Admin_Paneline_Git {
+            get {
+                return ResourceManager.GetString("Admin Paneline Git", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Aktif Rez.
         /// </summary>
         public static string Aktif_Rez {

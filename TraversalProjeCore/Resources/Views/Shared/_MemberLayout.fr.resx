@@ -147,4 +147,7 @@
   <data name="Geçmiş Rez" xml:space="preserve">
     <value>Passées Rés</value>
   </data>
+  <data name="Admin Paneline Git" xml:space="preserve">
+    <value>Espace Admin</value>
+  </data>
 </root>

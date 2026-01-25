@@ -9,7 +9,6 @@ namespace TraversalProjeCore.Areas.Admin.Controllers
 {
     [Area("Admin")]
     [Route("Admin/Role")]
-    [AllowAnonymous]
     public class RoleController : Controller
     {
         private readonly RoleManager<AppRole> _roleManager;
@@ -22,7 +21,7 @@ namespace TraversalProjeCore.Areas.Admin.Controllers
 
         }
 
-        [Route("Index")]
+        [Route("/Admin/Role/Index")]
         public IActionResult Index()
         {
             var values = _roleManager.Roles.ToList();
@@ -115,26 +114,32 @@ namespace TraversalProjeCore.Areas.Admin.Controllers
 
         [HttpPost]
         [Route("AssignRole/{id}")]
-        public async Task<IActionResult> AssignRole(int id, List<RoleAssignViewModel> model)
+        public async Task<IActionResult> AssignRole(List<RoleAssignViewModel> model, int id)
         {
-            // 1. İlgili kullanıcıyı bul
             var user = _userManager.Users.FirstOrDefault(x => x.Id == id);
-
+            if (user == null)
+            {
+                return NotFound();
+            }
             foreach (var item in model)
             {
                 if (item.RoleExist)
                 {
-                    // Eğer checkbox işaretliyse ve kullanıcıda bu rol yoksa, rolü ekle
-                    await _userManager.AddToRoleAsync(user, item.RoleName);
+                    // Kullanıcıda bu rol yoksa ekle (Hata almamak için kontrol ekledik)
+                    if (!await _userManager.IsInRoleAsync(user, item.RoleName))
+                    {
+                        await _userManager.AddToRoleAsync(user, item.RoleName);
+                    }
                 }
                 else
                 {
-                    // Eğer checkbox işareti kaldırıldıysa, rolü kullanıcıdan sil
-                    await _userManager.RemoveFromRoleAsync(user, item.RoleName);
+                    // Kullanıcıda bu rol varsa kaldır
+                    if (await _userManager.IsInRoleAsync(user, item.RoleName))
+                    {
+                        await _userManager.RemoveFromRoleAsync(user, item.RoleName);
+                    }
                 }
             }
-
-            // İşlem bitince kullanıcı listesine geri dön
             return RedirectToAction("UserList");
         }
     }

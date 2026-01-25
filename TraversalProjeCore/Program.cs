@@ -128,16 +128,16 @@ app.UseRequestLocalization(localizationOptions);
 app.UseAuthentication();
 app.UseAuthorization();
 
-// Alan (Area) Rotası (Eski UseEndpoints içindeki rota)
+// 1. Alan (Area) Rotası - En üstte kalmalı
 app.MapControllerRoute(
     name: "areas",
     pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
 );
 
+// 2. Varsayılan (Default) Rota
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}")
-    .WithStaticAssets(); // Özel varlık haritalama metodu
+    pattern: "{controller=Home}/{action=Index}/{id?}");
 
-
+// Uygulamayı çalıştır
 app.Run();

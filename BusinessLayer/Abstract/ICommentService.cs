@@ -10,6 +10,7 @@ namespace BusinessLayer.Abstract
         List<Comment> TGetDestinationById(int id); //id ye göre destination ın yorumlarını getirir
         List<Comment> TGetListCommentWithDestination(); //yorumları destination bilgileri ile birlikte getirir
         public List<Comment> TGetListCommentWithDestinationAndUser(int id);
+        List<Comment> TGetCommentsWithUserByDestinationId(int id);
 
     }
 }

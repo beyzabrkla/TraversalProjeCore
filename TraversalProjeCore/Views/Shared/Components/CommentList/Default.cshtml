@@ -1,30 +1,59 @@
 ﻿@using EntityLayer.Concrete
-@model List<Comment>
+@using X.PagedList
+@using X.PagedList.Mvc.Core
+@model IPagedList<Comment>
 
 <div class="comments mt-5">
-    <h4 class="side-title ">Yorumlar (@ViewBag.commentCount)</h4>
-    @foreach (var x in Model)
+    <h4 class="side-title">Yorumlar (@Model.TotalItemCount)</h4>
+
+    @if (Model != null && Model.Any())
     {
-        <div class="media mt-4">
-            <div class="img-circle">
-                <img src="@x.AppUser.ImageUrl" class="img-fluid" alt="...">
+        @foreach (var x in Model)
+        {
+            <div class="media mt-4">
+                <div class="img-circle">
+                    @* Kullanıcı adı ve resmi için null kontrolü *@
+                    <img src="@(x.AppUser?.ImageUrl ?? "/user-icon.png")" class="img-fluid" alt="...">
+                </div>
+                <div class="media-body">
+                    <ul class="time-rply mb-2">
+                        <li>
+                            @* Kullanıcı ismi burada görünecek *@
+                            <a href="#" class="name mt-0 mb-2 d-block">@x.AppUser?.Name @x.AppUser?.Surname</a>
+                            @x.CommentDate.ToString("dd MMMM yyyy")
+                        </li>
+                    </ul>
+                    <p>@x.CommentContent</p>
+                </div>
             </div>
-            <div class="media-body">
-
-                <ul class="time-rply mb-2">
-                    <li>
-                        <a href="#URL" class="name mt-0 mb-2 d-block">@x.AppUser.Name  @x.AppUser.Surname</a>
-                        @x.CommentDate.ToString("dd MMMM yyyy")
-
-                    </li>
-                    <li class="reply-last">
-                        <a href="#reply" class="reply">
-                            Yanıtla
-                        </a>
-                    </li>
-                </ul>
-                <p>@x.CommentContent</p>
-            </div>
-        </div>
+        }
     }
+    else
+    {
+        <div class="alert alert-info">Henüz yorum yapılmamış.</div>
+    }
+
+    <div class="pagination-wrapper mt-4 text-center">
+        @Html.PagedListPager((IPagedList)Model, page => Url.Action("DestinationDetails", "Destination", new { id = ViewBag.destID, page = page }), 
+        new PagedListRenderOptions {
+            LiElementClasses = new string[] { "page-item" },
+            PageClasses = new string[] { "page-link" }
+        })
+    </div>
 </div>
+
+<script>
+$(document).on("click", ".pagination a", function (e) {
+    e.preventDefault(); // Sayfanın yenilenmesini durdurur
+    var url = $(this).attr("href"); // Butondaki linki alır
+
+    // URL'den sayfa numarasını çekip bizim Partial metoduna yönlendiririz
+    $.ajax({
+        url: url.replace("DestinationDetails", "Comment/CommentListPartial"),
+        type: "GET",
+        success: function (data) {
+            $("#commentListContainer").html(data); // Sadece ilgili div'i günceller
+        }
+    });
+});
+</script>

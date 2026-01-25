@@ -10,7 +10,7 @@ using TraversalProjeCore.Areas.Admin.Models;
 
 namespace TraversalProjeCore.Areas.Admin.Controllers
 {
-    [AllowAnonymous]
+    [Authorize]
     [Area("Admin")]
     public class AnnouncementController : Controller
     {

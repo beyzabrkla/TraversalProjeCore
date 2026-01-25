@@ -6,7 +6,7 @@ using TraversalProjeCore.Models;
 
 namespace TraversalProjeCore.Areas.Admin.Controllers
 {
-    [AllowAnonymous]
+    [Authorize]
     [Area("Admin")]
     public class MailController : Controller
     {

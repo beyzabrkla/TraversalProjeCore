@@ -49,6 +49,9 @@ namespace BusinessLayer.Container
 
             services.AddScoped<IAccountService, AccountManager>();
             services.AddScoped<IAccountDal, EfAccountDal>();
+
+            services.AddScoped<ITestimonialService, TestimonialManager>();
+            services.AddScoped<ITestimonialDal, EFTestimonialDal>();
             
             services.AddScoped<IUOWDal, UOWDal>();
         }
