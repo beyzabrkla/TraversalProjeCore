@@ -85,7 +85,7 @@ Sistemin güvenlik ve kullanıcı yönetim merkezi olan bu bölümde, modern kim
 -Gezginin tur deneyimleri sonrası paylaştığı fikirlerin yönetim merkezidir.<br>
 -Kişisel Yorum Arşivi: Sadece o an oturum açmış olan kullanıcıya ait yorumlar listelenir. Kullanıcı, hangi rotaya ne zaman yorum yaptığını ve yorumunun içeriğini buradan takip edebilir.<br>
 -Onay Durumu Takibi: Admin tarafından henüz onaylanmamış yorumlar "Beklemede" statüsüyle görünür. Onaylandığı anda tur detay sayfasında herkes tarafından görülebilir hale gelir.<br>
--CRUD Operasyonları: Kullanıcı, kendi yaptığı yorumları bu panel üzerinden silme veya güncelleme yetkisine sahiptir.<br>
+-CRUD Operasyonları: Kullanıcı, kendi yaptığı yorumları bu panel üzerinden aktif veya pasif moduna çekebilir.<br>
 <img width="1916" height="910" alt="19" src="https://github.com/user-attachments/assets/680e495a-a574-4a03-a469-9a43fe4f0390" />
 
 ### 🗺️ Sitedeki Aktif ve Son Rotalar
