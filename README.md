@@ -5,10 +5,10 @@ Proje, ASP.NET Core 9.0 kullanılarak katmanlı mimari (N-Tier Architecture) ve 
 ## 🚀 Öne Çıkan Özellikler
 ### 🏠 Kullanıcı Arayüzü (Traversal Web)
 -Dinamik Rota Listeleme: Popüler tur noktalarının fiyat, süre ve içerik bilgileriyle sunulması.<br>
--Gelişmiş Filtreleme: Tarih ve lokasyon bazlı tur arama motoru.
--Rehber Kadromuz: Uzman rehberlerin bölgeleriyle birlikte tanıtıldığı dinamik ekip sayfası.
--İletişim & Harita: Google Maps entegrasyonlu ve AJAX tabanlı iletişim formu.
--Yorum Sistemi: Tur detaylarında kullanıcıların fotoğraflı ve tarihli deneyim paylaşımları.
+-Gelişmiş Filtreleme: Tarih ve lokasyon bazlı tur arama motoru.<br>
+-Rehber Kadromuz: Uzman rehberlerin bölgeleriyle birlikte tanıtıldığı dinamik ekip sayfası.<br>
+-İletişim & Harita: Google Maps entegrasyonlu ve AJAX tabanlı iletişim formu.<br>
+-Yorum Sistemi: Tur detaylarında kullanıcıların fotoğraflı ve tarihli deneyim paylaşımları.<br>
 
 <img width="1914" height="905" alt="1" src="https://github.com/user-attachments/assets/1d0980d8-540e-42d0-9b2a-60e79a9bf1ed" />
 <img width="1915" height="831" alt="2" src="https://github.com/user-attachments/assets/636b5885-677c-4071-b508-42fcfe5d9b4d" />
@@ -23,11 +23,11 @@ Proje, ASP.NET Core 9.0 kullanılarak katmanlı mimari (N-Tier Architecture) ve 
 <img width="460" height="358" alt="11" src="https://github.com/user-attachments/assets/0c3c0347-1ebe-46de-982a-9cc188e41a06" />
 
 ## 🔑 Kullanıcı Kayıt ve Giriş İşlemleri
-Sistemin güvenlik ve kullanıcı yönetim merkezi olan bu bölümde, modern kimlik doğrulama yöntemleri kullanılmıştır:
+Sistemin güvenlik ve kullanıcı yönetim merkezi olan bu bölümde, modern kimlik doğrulama yöntemleri kullanılmıştır.
 
 ### 📝 Kullanıcı Kayıt Sayfası (Sign Up)
--Identity Altyapısı: Yeni kullanıcı kayıtları AppUser sınıfı üzerinden, Identity'nin sunduğu güvenli CreateAsync metodu ile gerçekleştirilir.
--Validasyon Kontrolleri: Şifre uzunluğu, e-posta formatı ve kullanıcı adının benzersizliği gibi kriterler anlık olarak denetlenir.
+-Identity Altyapısı: Yeni kullanıcı kayıtları AppUser sınıfı üzerinden, Identity'nin sunduğu güvenli CreateAsync metodu ile gerçekleştirilir.<br>
+-Validasyon Kontrolleri: Şifre uzunluğu, e-posta formatı ve kullanıcı adının benzersizliği gibi kriterler anlık olarak denetlenir.<br>
 <img width="1914" height="911" alt="12" src="https://github.com/user-attachments/assets/463df289-172b-4977-87f3-8502ff049914" />
 
 ### 🔓 Kullanıcı Giriş Sayfası (Sign In)
@@ -35,18 +35,16 @@ Sistemin güvenlik ve kullanıcı yönetim merkezi olan bu bölümde, modern kim
 <img width="1917" height="915" alt="13" src="https://github.com/user-attachments/assets/1b270790-4db8-4c6c-9d7a-7b2572b2623a" />
 
 ### 🔑 Şifremi Unuttum ve Güvenli Sıfırlama Süreci
--Kullanıcıların hesaplarına erişimi kaybetmeleri durumunda devreye giren profesyonel şifre yenileme akışıdır:
--E-posta Doğrulama Linki: Kullanıcı "Şifremi Unuttum" talebi oluşturduğunda, sistem arka planda benzersiz bir Password Reset Token oluşturur ve bu token'ı içeren özel bir sıfırlama linkini kullanıcının kayıtlı e-posta adresine gönderir.
--MailKit Entegrasyonu: Şifre yenileme mailleri, SMTP protokolü üzerinden güvenli bir şekilde iletilir.
--Güvenli Güncelleme: Kullanıcı maildeki linke tıkladığında, token geçerliliği kontrol edilir ve yeni şifresini belirlemesi için özel bir forma yönlendirilir. Bu sayede hesap güvenliği en üst düzeyde korunur.
+-Kullanıcıların hesaplarına erişimi kaybetmeleri durumunda devreye giren profesyonel şifre yenileme akışıdır.<br>
+-E-posta Doğrulama Linki: Kullanıcı "Şifremi Unuttum" talebi oluşturduğunda, sistem arka planda benzersiz bir Password Reset Token oluşturur ve bu token'ı içeren özel bir sıfırlama linkini kullanıcının kayıtlı e-posta adresine gönderir.<br>
+-MailKit Entegrasyonu: Şifre yenileme mailleri, SMTP protokolü üzerinden güvenli bir şekilde iletilir.<br>
+-Güvenli Güncelleme: Kullanıcı maildeki linke tıkladığında, token geçerliliği kontrol edilir ve yeni şifresini belirlemesi için özel bir forma yönlendirilir. Bu sayede hesap güvenliği en üst düzeyde korunur.<br>
 <img width="1246" height="390" alt="36" src="https://github.com/user-attachments/assets/bf207ec3-643b-42df-9a4d-3bd59aa2c4d5" />
 <img width="987" height="69" alt="37" src="https://github.com/user-attachments/assets/738fe760-9279-4040-8062-d655fa6dca48" />
 <img width="1264" height="378" alt="38" src="https://github.com/user-attachments/assets/1ef5e595-29c7-4c64-b70d-047bea67b795" />
 
-### ⚡ Dinamik Sidebar ve Aktif Buton Yönetimi
-
 ## 👤 Gezgin (Member) Dashboard Sayfası
--Kullanıcıların kendi verilerini takip ettiği, şık ve fonksiyonel yönetim merkezidir:
+-Kullanıcıların kendi verilerini takip ettiği, şık ve fonksiyonel yönetim merkezidir.
 
 ### 📊 Kullanıcı Paneline Genel Bakış
 -Kişisel İstatistikler: Kullanıcının geçmişte yaptığı toplam rezervasyon sayısı, aktif onay bekleyen seyahatleri ve sistemdeki toplam rotalar gibi bilgiler dinamik kartlarla sunulur.
