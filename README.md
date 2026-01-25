@@ -4,7 +4,7 @@ Proje, ASP.NET Core 9.0 kullanılarak katmanlı mimari (N-Tier Architecture) ve 
 
 ## 🚀 Öne Çıkan Özellikler
 ### 🏠 Kullanıcı Arayüzü (Traversal Web)
--Dinamik Rota Listeleme: Popüler tur noktalarının fiyat, süre ve içerik bilgileriyle sunulması.
+-Dinamik Rota Listeleme: Popüler tur noktalarının fiyat, süre ve içerik bilgileriyle sunulması.<br>
 -Gelişmiş Filtreleme: Tarih ve lokasyon bazlı tur arama motoru.
 -Rehber Kadromuz: Uzman rehberlerin bölgeleriyle birlikte tanıtıldığı dinamik ekip sayfası.
 -İletişim & Harita: Google Maps entegrasyonlu ve AJAX tabanlı iletişim formu.
