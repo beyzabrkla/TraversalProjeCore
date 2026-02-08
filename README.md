@@ -1,4 +1,4 @@
-# 🌍 Traversal Core - Modern Seyahat Rezervasyon Sistemi
+# 🌍 Traversal Core - Modern Seyahat Rezervasyon Sistemi 
 Traversal, kullanıcıların hayallerindeki rotaları keşfedebileceği, rezervasyon yapabileceği ve deneyimlerini paylaşabileceği uçtan uca bir seyahat platformudur. 
 Proje, ASP.NET Core 9.0 kullanılarak katmanlı mimari (N-Tier Architecture) ve modern tasarım kalıplarıyla geliştirilmiştir.
 
