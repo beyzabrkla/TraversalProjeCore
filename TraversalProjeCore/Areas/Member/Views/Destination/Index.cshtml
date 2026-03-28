@@ -2,29 +2,66 @@
 @model List<Destination>
 @{
     ViewData["Title"] = "Index";
-    Layout = "~/Views/Shared/_UserLayout.cshtml";
+    Layout = "~/Views/Shared/_MemberLayout.cshtml";
 }
 
-<h1>Aktif Tur Rotalarımız</h1>
-<table class="table table-bordered">
-    <tr>
-        <td>#</td>
-        <td>Şehir</td>
-        <td>Süre</td>
-        <td>Kapasite</td>
-        <td>Fiyat</td>
-        <td>Detaylar</td>
-    </tr>
-    @foreach (var x in Model)
-    {
-        <tr>
-            <td>@x.DestinationId</td>
-            <td>@x.City</td>
-            <td>@x.DayNight</td>
-            <td>@x.Capacity</td>
-            <td>@x.Price</td>
-            <td><a href="#"class="btn btn-outline-info">Detaylar</a><td>
-        </tr>
-    }
-</table>
+<div class="row">
+	<div class="col-12">
+		<div class="card">
+			<div class="card-header">
+				<h4 class="card-title">Aktif Tur Rotalarımız</h4>
+				<a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
+				<div class="heading-elements">
+					<ul class="list-inline mb-0">
+						<li><a data-action="collapse"><i class="ft-minus"></i></a></li>
+						<li><a data-action="reload"><i class="ft-rotate-cw"></i></a></li>
+						<li><a data-action="expand"><i class="ft-maximize"></i></a></li>
+						<li><a data-action="close"><i class="ft-x"></i></a></li>
+					</ul>
+				</div>
+			</div>
+			<div class="card-content collapse show">
+				<div class="card-body">
+					<p class="card-text">Alanında uzman rehberlerimiz eşliğinde Balkanlardan Orta Asya'ya, Doğu Avrupa'dan Anadolu'nun dört bir yanına en uygun fiyatlarla sunduğumuz tur listemize ve tur detaylarına aşağıdaki
+						tablodan erişebilirsiniz.
+					</p>
 
+					<form asp-action="Index" method="get" asp-area="Member">
+						<div class="form-group">
+
+							<label for="searchCity">Şehir Adına Göre Arama Yapın:</label>
+							<input type="text" class="form-control" name="searchString" value="@ViewData["CurrentFilter"]" placeholder="Şehir Adını Girin..." />
+						</div>
+						<button type="submit" class="btn btn-primary">Ara</button>
+					</form>
+					<br />
+					<div class="table-responsive">
+						<table class="table table-bordered">
+							<tr>
+								<td>#</td>
+								<td>Şehir</td>
+								<td>Süre</td>
+								<td>Kapasite</td>
+								<td>Fiyat</td>
+								<td>Detaylar</td>
+							</tr>
+							@foreach (var x in Model)
+							{
+								<tr>
+									<td>@x.DestinationId</td>
+									<td>@x.City</td>
+									<td>@x.DayNight</td>
+									<td>@x.Capacity</td>
+									<td>@x.Price</td>
+									<td><a href="/Destination/DestinationDetails/@x.DestinationId" class="btn btn-outline-info">Detaylar</a>
+									<td>
+								</tr>
+							}
+						</table>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

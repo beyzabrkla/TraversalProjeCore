@@ -1,28 +1,53 @@
-﻿using BusinessLayer.Concrete;
-using DataAccessLayer.EntityFramework;
+﻿using BusinessLayer.Abstract;
 using EntityLayer.Concrete;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using System;
+using System.Threading.Tasks;
+using X.PagedList; // Bunu eklemeyi unutma
 
 namespace TraversalProjeCore.Controllers
 {
     public class CommentController : Controller
     {
-        CommentManager commentManager = new CommentManager(new EFCommentDal());
+        private readonly ICommentService _commentService; // Manager yerine Service kullanıyoruz
+        private readonly UserManager<AppUser> _userManager;
 
-
-        [HttpGet]
-        public PartialViewResult AddComment()
+        public CommentController(ICommentService commentService, UserManager<AppUser> userManager)
         {
-            return PartialView();
+            _commentService = commentService;
+            _userManager = userManager;
         }
 
+        [HttpGet]
+        public PartialViewResult AddComment() => PartialView();
+        
+
         [HttpPost]
-        public IActionResult AddComment(Comment p)
+        public async Task<IActionResult> AddComment(Comment p)
         {
-            p.CommentDate = DateTime.Parse(DateTime.Now.ToShortDateString());
+            if (string.IsNullOrWhiteSpace(p.CommentContent)) return BadRequest();
+
+            // Giriş yapan güncel kullanıcıyı yakala
+            var user = await _userManager.FindByNameAsync(User.Identity.Name);
+
+            p.AppUserId = user.Id; 
+            p.CommentDate = DateTime.Now;
             p.CommentState = true;
-            commentManager.TAdd(p);
-            return RedirectToAction("Index","Destination");
+
+            _commentService.TAdd(p);
+
+            // Yorumdan sonra detay sayfasına, aynı tura geri dön
+            return RedirectToAction("DestinationDetails", "Destination", new { id = p.DestinationId });
+        }
+
+        public IActionResult CommentListPartial(int id, int page = 1)
+        {
+            var values = _commentService.TGetListCommentWithDestinationAndUser(id);
+            var pagedList = values.ToPagedList(page, 3);
+            ViewBag.destID = id;
+
+            return PartialView("~/Views/Shared/Components/CommentList/Default.cshtml", pagedList);
         }
     }
 }

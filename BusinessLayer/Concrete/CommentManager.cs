@@ -1,6 +1,8 @@
 ﻿using BusinessLayer.Abstract;
 using DataAccessLayer.Abstract;
+using DataAccessLayer.Concrete;
 using EntityLayer.Concrete;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Net.Http.Headers;
@@ -44,12 +46,22 @@ namespace BusinessLayer.Concrete
 
         public void TUpdate(Comment t)
         {
-            throw new NotImplementedException();
+            _commentDal.Update(t);
         }
 
         public List<Comment> TGetListCommentWithDestination()
         {
             return _commentDal.GetListCommentWithDestination();
+        }
+
+        public List<Comment> TGetListCommentWithDestinationAndUser(int id)
+        {
+            return _commentDal.GetListCommentWithDestinationAndUser(id);
+        }
+
+        public List<Comment> TGetCommentsWithUserByDestinationId(int id)
+        {
+            return _commentDal.GetCommentsWithUserByDestinationId(id);
         }
     }
 }

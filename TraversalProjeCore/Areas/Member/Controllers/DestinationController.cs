@@ -6,13 +6,21 @@ using Microsoft.AspNetCore.Mvc;
 namespace TraversalProjeCore.Areas.Member.Controllers
 {
     [Area("Member")]
-    [AllowAnonymous]
+    [Authorize]
+    [Route("Member/[controller]/[action]")]
     public class DestinationController : Controller
     {
         DestinationManager _destinationManager = new DestinationManager(new EFDestinationDal());
-        public IActionResult Index()
+        public IActionResult Index(string searchString)
         {
-            var values = _destinationManager.TGetList();
+            ViewData["CurrentFilter"] = searchString;
+
+            // Veritabanındaki tüm rotaları ID'ye göre tersten sıralayıp son 4 tanesini alıyoruz
+            var values = _destinationManager.TGetList()
+                .OrderByDescending(x => x.DestinationId)
+                .Take(4)
+                .ToList();
+
             return View(values);
         }
     }

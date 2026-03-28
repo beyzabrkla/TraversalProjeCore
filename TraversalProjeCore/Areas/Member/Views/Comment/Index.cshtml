@@ -1,8 +1,54 @@
-﻿
+﻿@using EntityLayer.Concrete
+@model List<Comment>
+
 @{
     ViewData["Title"] = "Index";
-    Layout = "~/Views/Shared/_UserLayout.cshtml";
+    Layout = "~/Views/Shared/_MemberLayout.cshtml";
+    int count = 0; 
 }
 
-<h1>Index</h1>
-
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">Yaptığım Yorumlar</h4>
+            </div>
+            <div class="card-content collapse show">
+                <div class="card-body">
+                    <p class="card-text">Yaptığınız yorumlar en yeniden en eskiye doğru sıralanmıştır.</p>
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>#</th> 
+                                    <th>Rota</th>
+                                    <th>İçerik</th>
+                                    <th>Tarih</th>
+                                    <th>Durum</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    count++;
+                                             <tr>
+                                                 <th>@count</th>
+                                                 <td>@item.Destination.City</td>
+                                                 <td>@item.CommentContent</td>
+                                                 <td>@item.CommentDate.ToString("dd.MM.yyyy")</td>
+                                                 <td>
+                                                     <a href="/Member/Comment/ChangeStatus/@item.CommentId"
+                                                        class="badge @(item.CommentState.GetValueOrDefault() ? "badge-success" : "badge-danger")">
+                                                         @(item.CommentState.GetValueOrDefault() ? "Aktif" : "Pasif")
+                                                     </a>
+                                                 </td>
+                                             </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

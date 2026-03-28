@@ -65,15 +65,13 @@
 					</div>
 
 					<div class="text-center p-t-12">
-						<span class="txt1">
+						<a asp-controller="PasswordChange" asp-action="ForgetPassword" class="txt1">
 							Şifremi Unuttum
-						</span>
+						</a>
 					</div>
-
-					<div class="text-center p-t-136">
-						<a class="txt2" href="/Login/SignUp">
-							Bir Hesabınız Yok Mu?
-							<i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
+					<div class="text-center p-t-12">
+						<a asp-controller="Login" asp-action="SignUp" class="txt1">
+                            Üye Değil Misiniz ? Kayıt Olun
 						</a>
 					</div>
 				</form>

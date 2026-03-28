@@ -2,15 +2,34 @@
 <!doctype html>
 <html lang="zxx">
 
-@await Html.PartialAsync("/Views/LayoutPartial/HeaderPartial.cshtml")
+@await Html.PartialAsync("~/Views/LayoutPartial/HeaderPartial.cshtml")
 <body>
-@await Html.PartialAsync("/Views/LayoutPartial/NavbarPartial.cshtml")
+    @await Html.PartialAsync("~/Views/LayoutPartial/NavbarPartial.cshtml")
 
-@RenderBody()
+        @RenderBody()
 
-@await Html.PartialAsync("/Views/LayoutPartial/FooterPartial.cshtml")
+    @await Html.PartialAsync("~/Views/LayoutPartial/FooterPartial.cshtml")
 
-@await Html.PartialAsync("/Views/LayoutPartial/ScriptsPartial.cshtml")
+    @await Html.PartialAsync("~/Views/LayoutPartial/ScriptsPartial.cshtml")
 
 </body>
 </html>
+<script>
+function showReservationAlert() {
+    Swal.fire({
+        title: 'Rezervasyon İçin Üyelik Gereklidir',
+        text: "Kullanıcı kaydı olmadan rezervasyon oluşturamazsınız. Hemen aramıza katılın!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#ff1493', // Temanıza uygun renk
+        cancelButtonColor: '#6c757d',
+        confirmButtonText: 'Üye Ol / Giriş Yap',
+        cancelButtonText: 'Kapat'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            // Kullanıcıyı üye olma (kayıt) sayfasına yönlendirir
+            window.location.href = "/Login/SignUp/";
+        }
+    })
+}
+</script>

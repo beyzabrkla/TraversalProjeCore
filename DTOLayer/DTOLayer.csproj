@@ -6,10 +6,4 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
-  <ItemGroup>
-    <Compile Remove="DTOs\ContactDTOs\**" />
-    <EmbeddedResource Remove="DTOs\ContactDTOs\**" />
-    <None Remove="DTOs\ContactDTOs\**" />
-  </ItemGroup>
-
 </Project>

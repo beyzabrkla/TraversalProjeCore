@@ -3,26 +3,27 @@
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    int count = 0;
 }
 
-<h1>Yorum Listesi</h1>
+<h1>Tüm Yorum Listesi</h1>
 <table class="table table-bordered">
     <tr>
         <th>#</th>
         <th>Kullanıcı</th>
-        <th>Blog</th>
+        <th>Rota (Blog)</th>
         <th>Tarih</th>
         <th>Sil</th>
     </tr>
     @foreach (var x in Model)
     {
-        <tr>
-            <td>@x.CommentId</td>
-            <td>@x.CommentUser</td>
-            <td>@x.Destination.City</td>
-            <td>@x.CommentDate.ToString("dd-MMM-yyyy")</td>
-            <td><a href="/Admin/Comment/DeleteComment/@x.CommentId" class="btn btn-outline-danger">Sil</a></td>
-        </tr>
+        count++;
+                 <tr>
+                     <td>@count</td>
+                     <td>@(x.AppUser != null ? x.AppUser.Name + " " + x.AppUser.Surname : x.CommentUser)</td>
+                     <td>@x.Destination.City</td>
+                     <td>@x.CommentDate.ToString("dd-MMM-yyyy")</td>
+                     <td><a href="/Admin/Comment/DeleteComment/@x.CommentId" class="btn btn-outline-danger">Sil</a></td>
+                 </tr>
     }
 </table>
-

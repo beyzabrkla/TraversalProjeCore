@@ -33,6 +33,18 @@ namespace DataAccessLayer.EntityFramework
             }
         }
 
+        public List<Reservation> GetListWithReservationByUserId(int id)
+        {
+            using (var context = new Context())
+            {
+                return context.Reservations
+                    .Include(x => x.Destination)
+                    .Include(x => x.AppUser) 
+                    .Where(x => x.AppUserId == id)
+                    .ToList();
+            }
+        }
+
         public List<Reservation> GetListWithReservationByWaitApproval(int id)
         {
             using (var context = new Context())
@@ -40,6 +52,17 @@ namespace DataAccessLayer.EntityFramework
                 return context.Reservations
                     .Include(x => x.Destination)
                     .Where(x => x.AppUserId==id && x.Status == "Onay Bekliyor")
+                    .ToList();
+            }
+        }
+
+        public List<Reservation> GetListAllWithTables()
+        {
+            using (var context = new Context())
+            {
+                return context.Reservations
+                    .Include(x => x.AppUser)      // Misafir adı için
+                    .Include(x => x.Destination)  // Rota/Şehir adı için
                     .ToList();
             }
         }

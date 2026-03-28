@@ -9,7 +9,7 @@ using System;
 
 namespace TraversalProjeCore.Areas.Admin.Controllers
 {
-    [AllowAnonymous]
+    [Authorize]
     [Area("Admin")]
     public class CityController : Controller
     {

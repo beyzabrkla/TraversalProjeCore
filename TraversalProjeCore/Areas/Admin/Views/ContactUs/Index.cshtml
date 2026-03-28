@@ -24,8 +24,8 @@
             <td>@x.Name</td>
             <td>@x.Subject</td>
             <td>@x.MessageDate.ToString("dd-MMM-yyyy")</td>
-            <td><a href="#" class="btn btn-outline-primary">Mesajı Aç</a></td>
-            <td><a href="#" class="btn btn-outline-danger">Mesajı Sil</a></td>
+            <td><a href="/Admin/ContactUs/ContactUsDetails/@x.ContactUsId" class="btn btn-outline-primary">Mesajı Aç</a></td>
+            <td><a href="/Admin/ContactUs/DeleteContactUs/@x.ContactUsId" class="btn btn-outline-danger" onclick="return confirm('Bu mesajı silmek istediğinize emin misiniz?')">Mesajı Sil</a></td>
         </tr>
     }
 </table>

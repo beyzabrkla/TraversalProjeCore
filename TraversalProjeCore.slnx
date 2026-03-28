@@ -3,5 +3,8 @@
   <Project Path="DataAccessLayer/DataAccessLayer.csproj" Id="5f949bfa-c8b7-4bd6-880d-1587936995a3" />
   <Project Path="DTOLayer/DTOLayer.csproj" />
   <Project Path="EntityLayer/EntityLayer.csproj" Id="ba44b82a-1eba-46b0-abc7-6d76ea31300b" />
+  <Project Path="SiganlRApi/SiganlRApi.csproj" Id="5067cd96-edaf-4af9-965f-d6bbff64f545" />
+  <Project Path="SignalRApiForSql/SignalRApiForSql.csproj" Id="e944f0ed-9ac1-481f-a560-3db8d456376d" />
+  <Project Path="SignalRConsume/SignalRConsume.csproj" Id="bf161e58-d4e0-4878-adc0-22e2e3ae88a2" />
   <Project Path="TraversalProjeCore/TraversalProjeCore.csproj" />
 </Solution>

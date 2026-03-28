@@ -6,30 +6,52 @@
     int count = 0;
 }
 
-<h1>Kullanıcının Geçmiş Rezervasyonları</h1>
+<div class="card">
+    <h5 class="card-header">Kullanıcının Geçmiş ve Aktif Rezervasyonları</h5>
+    <div class="table-responsive text-nowrap">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Misafir Ad Soyad</th>
+                    <th>Rota</th>
+                    <th>Kişi Sayısı</th>
+                    <th>Tarih</th>
+                    <th>Durum</th>
+                    <th>Detaylar</th>
+                </tr>
+            </thead>
+            <tbody class="table-border-bottom-0">
+                @foreach (var x in Model)
+                {
+                    count++;
+                    <tr>
+                        <td>@count</td>
+                        <td><strong>@x.AppUser.Name @x.AppUser.Surname</strong></td>
+                        <td>@x.Destination.City</td>
+                        <td>@x.PersonCount</td>
+                        <td>@(((DateTime)x.ReservationDate).ToString("dd-MMM-yyyy"))</td>
+                        <td>
+                            @if (x.Status == "Onaylandı")
+                            {
+                                <span class="badge bg-label-success me-1">Aktif / Onaylı</span>
+                            }
+                            else if (x.Status == "Onay Bekliyor")
+                            {
+                                <span class="badge bg-label-warning me-1">Beklemede</span>
+                            }
+                            else
+                            {
+                                <span class="badge bg-label-secondary me-1">Geçmiş / İptal</span>
+                            }
+                        </td>
+                        <td><a href="/Admin/Destination/Index/" class="btn btn-outline-primary btn-sm">Rotayı Gör</a></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
 
-<table class="table table-bordered">
-    <tr>
-        <th>#</th>
-        <th>Misafir Ad Soyad</th>
-        <th>Rota</th>
-        <th>Kişi Sayısı</th>
-        <th>Tarih</th>
-        <th>Detaylar</th>
-    </tr>
-    @foreach (var x in Model)
-    {
-        {count +=1;}
-
-        <tr>
-            <td>@count</td>
-            <td>###</td>
-            <td>@x.Destination.City</td>
-            <td>@x.PersonCount</td>
-            <td>@(((DateTime)x.ReservationDate).ToString("dd-MMM-yyy"))</td>
-            <td><a href="#" class="btn btn-outline-primary">Detaylar</a></td>
-        </tr>
-    }
-</table>
-
-<a class="btn btn-outline-primary" href="/Login/SignUp">Yeni Kullanıcı Kaydı</a>
+<br />
+<a class="btn btn-outline-info" href="/Admin/User/Index/">Kullanıcı Listesine Dön</a>
